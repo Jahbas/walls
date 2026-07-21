@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>highpapers</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
   :root {
     --bg: #0a0a0a;
@@ -998,19 +999,49 @@ async function init() {
     update();
   });
 
-  folderDownloadBtn.addEventListener('click', () => {
+  folderDownloadBtn.addEventListener('click', async () => {
     const folder = allWallpapers.filter(w => w.anime === state.activeFolder);
     if (folder.length === 0) return;
+    folderDownloadBtn.disabled = true;
+    const orig = folderDownloadBtn.innerHTML;
+    const total = folder.length;
+    let done = 0;
 
-    folder.forEach(wp => {
+    const updateBtn = () => {
+      folderDownloadBtn.innerHTML = `<svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--mute);fill:none;stroke-width:2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>${done}/${total}`;
+    };
+    updateBtn();
+
+    try {
+      const files = await Promise.all(folder.map(async wp => {
+        const res = await fetch(wp.url);
+        if (!res.ok) throw new Error(`failed: ${wp.name}`);
+        const buf = await res.arrayBuffer();
+        done++;
+        updateBtn();
+        return { name: `${wp.name}.${wp.url.split('.').pop()}`, buf };
+      }));
+
+      const zip = new JSZip();
+      for (const { name, buf } of files) {
+        zip.file(name, buf, { binary: true });
+      }
+
+      const blob = await zip.generateAsync({ type: 'blob', compression: 'STORE' });
+      const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = wp.url;
-      a.download = wp.name || '';
-      a.style.display = 'none';
+      a.href = url;
+      a.download = `${state.activeFolder}.zip`;
       document.body.appendChild(a);
       a.click();
-      setTimeout(() => document.body.removeChild(a), 100);
-    });
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 5000);
+    } catch (_) {
+      // ignore
+    }
+
+    folderDownloadBtn.innerHTML = orig;
+    folderDownloadBtn.disabled = false;
   });
 
   const folderSvg = '<svg viewBox="0 0 24 24" style="position:absolute;top:12px;left:12px;width:20px;height:20px;stroke:rgba(255,255,255,0.6);fill:none;stroke-width:1.5;z-index:1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>';
