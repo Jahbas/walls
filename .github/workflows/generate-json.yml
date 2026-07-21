@@ -1,0 +1,67 @@
+name: generate wallpapers.json
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: install imagemagick
+        run: sudo apt-get install -y imagemagick
+      - name: generate wallpapers.json
+        run: |
+          python3 -c "
+          import json, os, subprocess, re, urllib.parse
+
+          tag = '${{ github.event.release.tag_name }}'
+          repo = '${{ github.repository }}'
+          base = f'https://github.com/{repo}/releases/download/{tag}'
+
+          entries = []
+          assets_raw = '''${{ toJson(github.event.release.assets) }}'''
+          assets = __import__('json').loads(assets_raw)
+
+          for a in assets:
+              name = a['name']
+              url = a['browser_download_url']
+              size = a['size']
+              m = re.match(r'^(.+?)-(\d+)\.(\w+)$', name)
+              if not m:
+                  continue
+              slug, num, ext = m.groups()
+              anime = slug.replace('-', ' ').title()
+              # download and get metadata
+              import urllib.request, tempfile, shutil
+              tmp = tempfile.NamedTemporaryFile(suffix='.' + ext, delete=False)
+              tmp.close()
+              urllib.request.urlretrieve(url, tmp.name)
+              r = subprocess.run(['identify', '-format', '%w %h', tmp.name], capture_output=True, text=True)
+              w, h = r.stdout.strip().split()
+              dc = subprocess.run(['identify', '-format', '%[pixel:p{0,0}]', tmp.name], capture_output=True, text=True)
+              color = dc.stdout.strip()
+              os.unlink(tmp.name)
+              entries.append({
+                  'name': f'{anime} {int(num)}',
+                  'url': url,
+                  'resolution': f'{w}x{h}',
+                  'fileSize': size,
+                  'dominantColor': color,
+                  'anime': anime
+              })
+
+          with open('wallpapers.json', 'w') as f:
+              json.dump(entries, f, indent=2, ensure_ascii=False)
+          print(f'Generated {len(entries)} entries')
+          "
+      - name: commit wallpapers.json
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add wallpapers.json
+          git commit -m "auto-generate wallpapers.json for ${{ github.event.release.tag_name }}" || true
+          git push
