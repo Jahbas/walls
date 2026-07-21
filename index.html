@@ -330,6 +330,12 @@
   .folder-nav button:hover { background: var(--active); }
   .folder-nav button:hover svg { stroke: var(--text); }
 
+  .folder-nav .nav-label {
+    font-size: 11px;
+    color: var(--mute);
+    margin: 0 4px;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -581,11 +587,11 @@
 <div class="count-bar">
   <span class="count" id="count"></span>
   <div class="folder-nav" id="folderNav">
-    <button id="prevFolder" aria-label="Previous folder">
+    <button id="folderBack" aria-label="Back to folders">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
-    <button id="nextFolder" aria-label="Next folder">
-      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    <button id="folderDownload" aria-label="Download folder">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     </button>
   </div>
 </div>
@@ -762,27 +768,28 @@ async function init() {
   const empty = document.getElementById('empty');
   const countEl = document.getElementById('count');
   const folderNav = document.getElementById('folderNav');
-  const prevFolderBtn = document.getElementById('prevFolder');
-  const nextFolderBtn = document.getElementById('nextFolder');
+  const folderBackBtn = document.getElementById('folderBack');
+  const folderDownloadBtn = document.getElementById('folderDownload');
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
   const lbDl = lb.querySelector('.lb-dl');
   const lbClose = lb.querySelector('.lb-close');
 
-  prevFolderBtn.addEventListener('click', () => {
-    const idx = state.allAnimes.indexOf(state.activeFolder);
-    if (idx > 0) {
-      state.activeFolder = state.allAnimes[idx - 1];
-      update();
-    }
+  folderBackBtn.addEventListener('click', () => {
+    state.activeFolder = null;
+    update();
   });
 
-  nextFolderBtn.addEventListener('click', () => {
-    const idx = state.allAnimes.indexOf(state.activeFolder);
-    if (idx < state.allAnimes.length - 1) {
-      state.activeFolder = state.allAnimes[idx + 1];
-      update();
-    }
+  folderDownloadBtn.addEventListener('click', () => {
+    const folder = allWallpapers.filter(w => w.anime === state.activeFolder);
+    folder.forEach((wp, i) => {
+      setTimeout(() => {
+        const a = document.createElement('a');
+        a.href = wp.url;
+        a.download = wp.name || '';
+        a.click();
+      }, i * 400);
+    });
   });
 
   const folderSvg = '<svg viewBox="0 0 24 24" style="position:absolute;top:12px;left:12px;width:20px;height:20px;stroke:rgba(255,255,255,0.6);fill:none;stroke-width:1.5;z-index:1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>';
