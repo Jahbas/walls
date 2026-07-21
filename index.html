@@ -11,6 +11,8 @@
     --text: #ededed;
     --mute: #5c5c5c;
     --border: #1f1f1f;
+    --active: #2a2a2a;
+    --pill: #1c1c1c;
     --shadow: rgba(0,0,0,0.6);
   }
 
@@ -30,10 +32,7 @@
   }
 
   header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
 
   h1 {
@@ -43,20 +42,235 @@
     color: var(--text);
   }
 
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .search {
+    flex: 1;
+    min-width: 200px;
+    max-width: 320px;
+    height: 34px;
+    padding: 0 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .search::placeholder { color: var(--mute); }
+  .search:focus { border-color: #333; }
+
+  .pills {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 8px 4px 10px;
+    background: var(--pill);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 11px;
+    color: var(--text);
+    cursor: default;
+    animation: pillIn 0.15s ease;
+  }
+
+  .pill button {
+    background: none;
+    border: none;
+    color: var(--mute);
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    padding: 0;
+    display: flex;
+  }
+
+  .pill button:hover { color: var(--text); }
+
+  @keyframes pillIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .filter-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .filter-btn svg {
+    width: 15px;
+    height: 15px;
+    stroke: var(--text);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--active);
+    border-color: #333;
+  }
+
+  .filter-btn .dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    display: none;
+  }
+
+  .filter-btn.has-filters .dot { display: block; }
+
+  .filter-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 32px;
+    display: none;
+    animation: panelIn 0.15s ease;
+  }
+
+  .filter-panel.open { display: block; }
+
+  @keyframes panelIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .filter-section {
+    margin-bottom: 18px;
+  }
+
+  .filter-section:last-child { margin-bottom: 0; }
+
+  .filter-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--mute);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .filter-option {
+    padding: 5px 12px;
+    border-radius: 5px;
+    background: var(--pill);
+    border: 1px solid var(--border);
+    color: var(--mute);
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .filter-option:hover {
+    color: var(--text);
+    border-color: #333;
+  }
+
+  .filter-option.selected {
+    background: var(--active);
+    border-color: #444;
+    color: var(--text);
+  }
+
+  .filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    background: var(--pill);
+    border: 1px solid var(--border);
+    color: var(--mute);
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .filter-toggle.on {
+    background: var(--active);
+    border-color: #444;
+    color: var(--text);
+  }
+
+  .filter-toggle .toggle-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background 0.15s ease;
+  }
+
+  .filter-toggle.on .toggle-dot { background: #fff; }
+
+  .anime-list {
+    margin-top: 8px;
+    display: none;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .anime-list.show { display: flex; }
+
+  .count-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
   .count {
     font-size: 13px;
     color: var(--mute);
     font-variant-numeric: tabular-nums;
   }
 
+  .count .filtered {
+    color: var(--text);
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
-  }
-
-  .grid:empty {
-    display: none;
   }
 
   .card {
@@ -84,9 +298,7 @@
     transition: transform 0.4s ease;
   }
 
-  .card:hover img {
-    transform: scale(1.03);
-  }
+  .card:hover img { transform: scale(1.03); }
 
   .card .meta {
     position: absolute;
@@ -139,15 +351,10 @@
     stroke-width: 1.5;
   }
 
-  .card .download:hover {
-    background: rgba(255,255,255,0.2);
-  }
+  .card .download:hover { background: rgba(255,255,255,0.2); }
 
   @keyframes enter {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .lightbox {
@@ -165,10 +372,7 @@
     transition: opacity 0.25s ease;
   }
 
-  .lightbox.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
+  .lightbox.open { opacity: 1; pointer-events: auto; }
 
   .lightbox img {
     max-width: 92vw;
@@ -205,9 +409,7 @@
     stroke-width: 1.5;
   }
 
-  .lightbox .close:hover {
-    background: rgba(255,255,255,0.15);
-  }
+  .lightbox .close:hover { background: rgba(255,255,255,0.15); }
 
   .lightbox .dl {
     position: absolute;
@@ -237,9 +439,7 @@
     stroke-width: 1.5;
   }
 
-  .lightbox .dl:hover {
-    background: rgba(255,255,255,0.15);
-  }
+  .lightbox .dl:hover { background: rgba(255,255,255,0.15); }
 
   .empty {
     display: flex;
@@ -263,6 +463,9 @@
   @media (max-width: 768px) {
     body { padding: 32px 16px 64px; }
     .grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+    .toolbar { flex-direction: column; align-items: stretch; }
+    .search { max-width: none; }
+    .pills { order: 3; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -272,16 +475,53 @@
 </style>
 </head>
 <body>
-<header>
-  <h1>highpapers</h1>
+<header><h1>highpapers</h1></header>
+
+<div class="toolbar">
+  <input type="text" class="search" id="search" placeholder="search...">
+  <div class="pills" id="pills"></div>
+  <button class="filter-btn" id="filterBtn" aria-label="Filters">
+    <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="6" y1="18" x2="18" y2="18"/><circle cx="16" cy="6" r="1.5"/><circle cx="8" cy="12" r="1.5"/><circle cx="14" cy="18" r="1.5"/></svg>
+    <span class="dot"></span>
+  </button>
+</div>
+
+<div class="filter-panel" id="filterPanel">
+  <div class="filter-section">
+    <div class="filter-label">Resolution</div>
+    <div class="filter-options" id="resFilters">
+      <button class="filter-option" data-val="4k">4K</button>
+      <button class="filter-option" data-val="1080p">1080p</button>
+      <button class="filter-option" data-val="custom">other</button>
+    </div>
+  </div>
+  <div class="filter-section">
+    <div class="filter-label">Screen</div>
+    <div class="filter-options" id="screenFilters">
+      <button class="filter-option" data-val="3840x2160">3840x2160</button>
+      <button class="filter-option" data-val="1080x1920">1080x1920</button>
+      <button class="filter-option" data-val="custom">other</button>
+    </div>
+  </div>
+  <div class="filter-section">
+    <div class="filter-label">Anime</div>
+    <button class="filter-toggle" id="animeToggle">
+      <span class="toggle-dot"></span>
+      anime
+    </button>
+    <div class="anime-list" id="animeList"></div>
+  </div>
+</div>
+
+<div class="count-bar">
   <span class="count" id="count"></span>
-</header>
+</div>
 
 <div class="grid" id="grid"></div>
 
 <div class="empty" id="empty">
   <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-  <span>no wallpapers yet &mdash; add some to wallpapers.json</span>
+  <span>no wallpapers match</span>
 </div>
 
 <div class="lightbox" id="lightbox">
@@ -296,85 +536,242 @@
 </div>
 
 <script>
+const state = {
+  search: '',
+  res: [],
+  screen: [],
+  animeEnabled: false,
+  animes: [],
+  allAnimes: []
+};
+
+function resCat(w, h) {
+  if (w >= 3840 && h >= 2160) return '4k';
+  if (w >= 1920 && h >= 1080) return '1080p';
+  return 'custom';
+}
+
+function screenCat(w, h) {
+  const key = `${w}x${h}`;
+  if (key === '3840x2160' || key === '1080x1920') return key;
+  return 'custom';
+}
+
+function pill(label, group, val) {
+  const p = document.createElement('span');
+  p.className = 'pill';
+  p.innerHTML = `${label} <button aria-label="Remove ${label}">&times;</button>`;
+  p.querySelector('button').addEventListener('click', () => {
+    if (group === 'res') state.res = state.res.filter(v => v !== val);
+    if (group === 'screen') state.screen = state.screen.filter(v => v !== val);
+    if (group === 'anime') {
+      state.animes = state.animes.filter(v => v !== val);
+      if (state.animes.length === 0) state.animeEnabled = false;
+    }
+    update();
+  });
+  return p;
+}
+
+function updatePills() {
+  const container = document.getElementById('pills');
+  container.innerHTML = '';
+  state.res.forEach(v => {
+    const label = v === '4k' ? '4K' : v === '1080p' ? '1080p' : 'other res';
+    container.appendChild(pill(label, 'res', v));
+  });
+  state.screen.forEach(v => {
+    const label = v === 'custom' ? 'other screen' : v;
+    container.appendChild(pill(label, 'screen', v));
+  });
+  state.animes.forEach(v => {
+    container.appendChild(pill(v, 'anime', v));
+  });
+  const fb = document.getElementById('filterBtn');
+  const has = state.res.length > 0 || state.screen.length > 0 || state.animes.length > 0;
+  fb.classList.toggle('has-filters', has);
+  if (state.animes.length > 0) fb.classList.add('active');
+
+  document.getElementById('animeToggle').classList.toggle('on', state.animes.length > 0);
+}
+
+function matches(wp) {
+  const [w, h] = wp.resolution.split('x').map(Number);
+  if (state.search) {
+    const q = state.search.toLowerCase();
+    if (!wp.name.toLowerCase().includes(q) && !(wp.anime || '').toLowerCase().includes(q)) return false;
+  }
+  if (state.res.length > 0 && !state.res.includes(resCat(w, h))) return false;
+  if (state.screen.length > 0 && !state.screen.includes(screenCat(w, h))) return false;
+  if (state.animes.length > 0 && !state.animes.includes(wp.anime)) return false;
+  return true;
+}
+
 async function init() {
   const res = await fetch('wallpapers.json');
-  const wallpapers = await res.json();
+  const all = await res.json();
 
-  const countEl = document.getElementById('count');
+  state.allAnimes = [...new Set(all.map(w => w.anime).filter(Boolean))].sort();
+
+  const animeList = document.getElementById('animeList');
+  state.allAnimes.forEach(a => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-option';
+    btn.textContent = a;
+    btn.addEventListener('click', () => {
+      if (state.animes.includes(a)) {
+        state.animes = state.animes.filter(v => v !== a);
+      } else {
+        state.animes.push(a);
+      }
+      update();
+    });
+    animeList.appendChild(btn);
+  });
+
+  document.getElementById('animeToggle').addEventListener('click', () => {
+    if (state.animes.length > 0) {
+      state.animes = [];
+    } else {
+      state.animes = [...state.allAnimes];
+    }
+    update();
+  });
+
+  document.getElementById('resFilters').addEventListener('click', e => {
+    if (!e.target.classList.contains('filter-option')) return;
+    const v = e.target.dataset.val;
+    if (state.res.includes(v)) state.res = state.res.filter(x => x !== v);
+    else state.res.push(v);
+    update();
+  });
+
+  document.getElementById('screenFilters').addEventListener('click', e => {
+    if (!e.target.classList.contains('filter-option')) return;
+    const v = e.target.dataset.val;
+    if (state.screen.includes(v)) state.screen = state.screen.filter(x => x !== v);
+    else state.screen.push(v);
+    update();
+  });
+
+  const filterBtn = document.getElementById('filterBtn');
+  const filterPanel = document.getElementById('filterPanel');
+  filterBtn.addEventListener('click', () => {
+    filterPanel.classList.toggle('open');
+  });
+
+  const search = document.getElementById('search');
+  let searchTimer;
+  search.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      state.search = search.value;
+      update();
+    }, 150);
+  });
+
+  function updateAnimeOptions() {
+    document.querySelectorAll('#animeList .filter-option').forEach(btn => {
+      btn.classList.toggle('selected', state.animes.includes(btn.textContent));
+    });
+    const list = document.getElementById('animeList');
+    list.classList.toggle('show', state.animes.length > 0 || state.allAnimes.length > 0);
+    // always show when panel open
+    if (filterPanel.classList.contains('open')) list.classList.add('show');
+  }
+
+  function updateResOptions() {
+    document.querySelectorAll('#resFilters .filter-option').forEach(btn => {
+      btn.classList.toggle('selected', state.res.includes(btn.dataset.val));
+    });
+  }
+
+  function updateScreenOptions() {
+    document.querySelectorAll('#screenFilters .filter-option').forEach(btn => {
+      btn.classList.toggle('selected', state.screen.includes(btn.dataset.val));
+    });
+  }
+
   const grid = document.getElementById('grid');
   const empty = document.getElementById('empty');
+  const countEl = document.getElementById('count');
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
   const lbDl = lb.querySelector('.dl');
 
-  countEl.textContent = wallpapers.length
-    ? `${wallpapers.length} wallpaper${wallpapers.length === 1 ? '' : 's'}`
-    : '';
-
-  if (wallpapers.length === 0) {
-    empty.style.display = 'flex';
-    return;
-  }
-
-  empty.style.display = 'none';
-
   const downloadSvg = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
-  wallpapers.forEach((wp, i) => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.animationDelay = `${i * 0.06}s`;
+  function render() {
+    const filtered = all.filter(matches);
+    grid.innerHTML = '';
+    empty.style.display = filtered.length === 0 ? 'flex' : 'none';
 
-    const img = document.createElement('img');
-    img.src = wp.url;
-    img.alt = wp.name || '';
-    img.loading = 'lazy';
+    const total = all.length;
+    const shown = filtered.length;
+    if (total === shown) {
+      countEl.innerHTML = `${total} wallpaper${total === 1 ? '' : 's'}`;
+    } else {
+      countEl.innerHTML = `<span class="filtered">${shown}</span> / ${total} wallpapers`;
+    }
 
-    const meta = document.createElement('div');
-    meta.className = 'meta';
+    filtered.forEach((wp, i) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.animationDelay = `${i * 0.04}s`;
 
-    const info = document.createElement('div');
-    info.innerHTML = `<div class="name">${wp.name || 'untitled'}</div>${wp.resolution ? `<div class="res">${wp.resolution}</div>` : ''}`;
+      const img = document.createElement('img');
+      img.src = wp.url;
+      img.alt = wp.name || '';
+      img.loading = 'lazy';
 
-    const dl = document.createElement('button');
-    dl.className = 'download';
-    dl.innerHTML = downloadSvg;
-    dl.title = 'Download';
-    dl.addEventListener('click', e => {
-      e.stopPropagation();
-      const a = document.createElement('a');
-      a.href = wp.url;
-      a.download = wp.name || '';
-      a.click();
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+
+      const info = document.createElement('div');
+      info.innerHTML = `<div class="name">${wp.name || 'untitled'}</div>${wp.resolution ? `<div class="res">${wp.resolution}</div>` : ''}`;
+
+      const dl = document.createElement('button');
+      dl.className = 'download';
+      dl.innerHTML = downloadSvg;
+      dl.title = 'Download';
+      dl.addEventListener('click', e => {
+        e.stopPropagation();
+        const a = document.createElement('a');
+        a.href = wp.url;
+        a.download = wp.name || '';
+        a.click();
+      });
+
+      meta.appendChild(info);
+      meta.appendChild(dl);
+      card.appendChild(img);
+      card.appendChild(meta);
+
+      card.addEventListener('click', () => {
+        lbImg.src = wp.url;
+        lbImg.alt = wp.name || '';
+        lbDl.href = wp.url;
+        lbDl.download = wp.name || '';
+        lb.classList.add('open');
+      });
+
+      grid.appendChild(card);
     });
+  }
 
-    meta.appendChild(info);
-    meta.appendChild(dl);
-    card.appendChild(img);
-    card.appendChild(meta);
+  function update() {
+    updatePills();
+    updateResOptions();
+    updateScreenOptions();
+    updateAnimeOptions();
+    render();
+  }
 
-    card.addEventListener('click', () => {
-      lbImg.src = wp.url;
-      lbImg.alt = wp.name || '';
-      lbDl.href = wp.url;
-      lbDl.download = wp.name || '';
-      lb.classList.add('open');
-    });
+  update();
 
-    grid.appendChild(card);
-  });
-
-  lb.querySelector('.close').addEventListener('click', () => {
-    lb.classList.remove('open');
-  });
-
-  lb.addEventListener('click', e => {
-    if (e.target === lb) lb.classList.remove('open');
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') lb.classList.remove('open');
-  });
+  lb.querySelector('.close').addEventListener('click', () => lb.classList.remove('open'));
+  lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
 }
 
 init();
