@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>walls</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #131313;
+    --text: #ededed;
+    --mute: #5c5c5c;
+    --border: #1f1f1f;
+    --shadow: rgba(0,0,0,0.6);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 48px 32px 96px;
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  h1 {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .count {
+    font-size: 13px;
+    color: var(--mute);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--surface);
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: enter 0.5s ease forwards;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px var(--shadow);
+  }
+
+  .card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover img {
+    transform: scale(1.03);
+  }
+
+  .card .meta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 16px 12px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .card:hover .meta { opacity: 1; }
+
+  .card .name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .card .res {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card .download {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: var(--text);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .card .download:hover {
+    background: rgba(255,255,255,0.2);
+  }
+
+  @keyframes enter {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 90vh;
+    border-radius: 4px;
+    box-shadow: 0 4px 80px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+  }
+
+  .lightbox.open img { transform: scale(1); }
+
+  .lightbox .close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+
+  .lightbox .close:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .lightbox .dl {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 18px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    text-decoration: none;
+  }
+
+  .lightbox .dl:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  @media (max-width: 768px) {
+    body { padding: 32px 16px 64px; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; opacity: 1; transform: none; }
+    .lightbox img { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>walls</h1>
+  <span class="count" id="count"></span>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<div class="lightbox" id="lightbox">
+  <button class="close" aria-label="Close">&times;</button>
+  <img src="" alt="">
+  <a class="dl" download href="">download</a>
+</div>
+
+<script>
+async function init() {
+  const res = await fetch('wallpapers.json');
+  const wallpapers = await res.json();
+
+  document.getElementById('count').textContent = `${wallpapers.length} wallpaper${wallpapers.length === 1 ? '' : 's'}`;
+
+  const grid = document.getElementById('grid');
+  const lb = document.getElementById('lightbox');
+  const lbImg = lb.querySelector('img');
+  const lbDl = lb.querySelector('.dl');
+
+  wallpapers.forEach((wp, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.animationDelay = `${i * 0.06}s`;
+
+    const img = document.createElement('img');
+    img.src = wp.url;
+    img.alt = wp.name || '';
+    img.loading = 'lazy';
+
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+
+    const info = document.createElement('div');
+    info.innerHTML = `<div class="name">${wp.name || 'untitled'}</div>${wp.resolution ? `<div class="res">${wp.resolution}</div>` : ''}`;
+
+    const dl = document.createElement('button');
+    dl.className = 'download';
+    dl.innerHTML = '&#8595;';
+    dl.title = 'Download';
+    dl.addEventListener('click', e => {
+      e.stopPropagation();
+      const a = document.createElement('a');
+      a.href = wp.url;
+      a.download = wp.name || '';
+      a.click();
+    });
+
+    meta.appendChild(info);
+    meta.appendChild(dl);
+    card.appendChild(img);
+    card.appendChild(meta);
+
+    card.addEventListener('click', () => {
+      lbImg.src = wp.url;
+      lbImg.alt = wp.name || '';
+      lbDl.href = wp.url;
+      lbDl.download = wp.name || '';
+      lb.classList.add('open');
+    });
+
+    grid.appendChild(card);
+  });
+
+  lb.querySelector('.close').addEventListener('click', () => {
+    lb.classList.remove('open');
+  });
+
+  lb.addEventListener('click', e => {
+    if (e.target === lb) lb.classList.remove('open');
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') lb.classList.remove('open');
+  });
+}
+
+init();
+</script>
+</body>
+</html>
