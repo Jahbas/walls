@@ -1130,6 +1130,8 @@ async function init() {
       card.className = 'folder-card';
       card.style.animationDelay = `${i * 0.04}s`;
 
+      card.innerHTML = folderSvg;
+
       if (f.preview) {
         const img = document.createElement('img');
         img.src = f.preview.url;
@@ -1149,8 +1151,6 @@ async function init() {
       meta.appendChild(fnDiv);
       meta.appendChild(fcDiv);
 
-      card.innerHTML = folderSvg;
-      card.appendChild(img);
       card.appendChild(meta);
 
       card.addEventListener('click', () => {
