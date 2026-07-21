@@ -999,11 +999,15 @@ async function init() {
   folderDownloadBtn.addEventListener('click', () => {
     const folder = allWallpapers.filter(w => w.anime === state.activeFolder);
     if (folder.length === 0) return;
-    folder.forEach(wp => {
-      const a = document.createElement('a');
-      a.href = wp.url;
-      a.download = wp.name || '';
-      a.click();
+    folder.forEach((wp, i) => {
+      setTimeout(() => {
+        const a = document.createElement('a');
+        a.href = wp.url;
+        a.download = wp.name || '';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      }, i * 100);
     });
   });
 
