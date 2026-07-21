@@ -233,12 +233,15 @@
   }
 
   .filter-option {
-    padding: 4px 10px;
+    padding: 8px 14px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
     border-radius: 4px;
     background: var(--pill);
     border: 1px solid var(--border);
     color: var(--mute);
-    font-size: 12px;
+    font-size: 13px;
     font-family: inherit;
     cursor: pointer;
     transition: all 0.12s ease;
@@ -256,12 +259,13 @@
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 4px 10px;
+    padding: 8px 14px;
+    min-height: 44px;
     border-radius: 4px;
     background: var(--pill);
     border: 1px solid var(--border);
     color: var(--mute);
-    font-size: 12px;
+    font-size: 13px;
     font-family: inherit;
     cursor: pointer;
     transition: all 0.12s ease;
@@ -355,13 +359,26 @@
     opacity: 0;
     transform: translateY(12px);
     animation: enter 0.5s ease forwards;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease;
+    will-change: transform;
+  }
+
+  .card::after, .folder-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    box-shadow: 0 12px 40px var(--shadow);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
   }
 
   .card:hover, .folder-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px var(--shadow);
   }
+
+  .card:hover::after, .folder-card:hover::after { opacity: 1; }
 
   .card img, .folder-card img {
     display: block;
@@ -414,8 +431,8 @@
   }
 
   .card .download {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background: rgba(255,255,255,0.1);
     border: none;
@@ -429,8 +446,8 @@
   }
 
   .card .download svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     stroke: var(--text);
     fill: none;
     stroke-width: 1.5;
@@ -446,8 +463,6 @@
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     z-index: 100;
     display: flex;
     align-items: center;
@@ -479,8 +494,8 @@
   }
 
   .lightbox .top-actions button, .lightbox .top-actions a {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: rgba(255,255,255,0.08);
     border: none;
@@ -497,8 +512,8 @@
   }
 
   .lightbox .top-actions svg {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     stroke: var(--text);
     fill: none;
     stroke-width: 1.5;
@@ -521,6 +536,29 @@
     fill: none;
     stroke-width: 1.2;
     opacity: 0.5;
+  }
+
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 80px 0;
+    color: var(--mute);
+    font-size: 14px;
+  }
+
+  .loading-spinner {
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--border);
+    border-top-color: var(--mute);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
   }
 
   @media (max-width: 768px) {
@@ -602,16 +640,21 @@
 
 <div class="grid" id="grid"></div>
 
+<div class="loading" id="loading">
+  <div class="loading-spinner"></div>
+  <span>loading</span>
+</div>
+
 <div class="empty" id="empty">
   <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-  <span>no wallpapers match</span>
+  <span id="emptyMsg">no wallpapers match</span>
 </div>
 
 <div class="lightbox" id="lightbox">
   <div class="top-actions">
-    <a class="lb-dl" download href="">
+    <button class="lb-dl" aria-label="Download">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    </a>
+    </button>
     <button class="lb-close" aria-label="Close">
       <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
@@ -705,9 +748,36 @@ function matches(wp) {
   return true;
 }
 
+async function downloadFile(url, filename) {
+  try {
+    const r = await fetch(url);
+    const blob = await r.blob();
+    const obj = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = obj;
+    a.download = filename || '';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(obj), 1000);
+  } catch (_) {}
+}
+
 async function init() {
-  const res = await fetch('wallpapers.json');
-  allWallpapers = await res.json();
+  const loading = document.getElementById('loading');
+  const emptyMsg = document.getElementById('emptyMsg');
+
+  try {
+    const res = await fetch('wallpapers.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    allWallpapers = await res.json();
+  } catch (err) {
+    loading.style.display = 'none';
+    const empty = document.getElementById('empty');
+    empty.style.display = 'flex';
+    emptyMsg.textContent = 'failed to load wallpapers';
+    return;
+  }
+
+  loading.style.display = 'none';
 
   state.allAnimes = [...new Set(allWallpapers.map(w => w.anime).filter(Boolean))].sort();
 
@@ -796,12 +866,7 @@ async function init() {
   folderDownloadBtn.addEventListener('click', () => {
     const folder = allWallpapers.filter(w => w.anime === state.activeFolder);
     folder.forEach((wp, i) => {
-      setTimeout(() => {
-        const a = document.createElement('a');
-        a.href = wp.url;
-        a.download = wp.name || '';
-        a.click();
-      }, i * 400);
+      setTimeout(() => downloadFile(wp.url, wp.name || ''), i * 400);
     });
   });
 
@@ -882,7 +947,16 @@ async function init() {
       meta.className = 'meta';
 
       const info = document.createElement('div');
-      info.innerHTML = `<div class="name">${wp.name || 'untitled'}</div>${wp.resolution ? `<div class="res">${wp.resolution}</div>` : ''}`;
+      const nameDiv = document.createElement('div');
+      nameDiv.className = 'name';
+      nameDiv.textContent = wp.name || 'untitled';
+      info.appendChild(nameDiv);
+      if (wp.resolution) {
+        const resDiv = document.createElement('div');
+        resDiv.className = 'res';
+        resDiv.textContent = wp.resolution;
+        info.appendChild(resDiv);
+      }
 
       const dl = document.createElement('button');
       dl.className = 'download';
@@ -890,10 +964,7 @@ async function init() {
       dl.title = 'Download';
       dl.addEventListener('click', e => {
         e.stopPropagation();
-        const a = document.createElement('a');
-        a.href = wp.url;
-        a.download = wp.name || '';
-        a.click();
+        downloadFile(wp.url, wp.name || '');
       });
 
       meta.appendChild(info);
@@ -904,8 +975,7 @@ async function init() {
       card.addEventListener('click', () => {
         lbImg.src = wp.url;
         lbImg.alt = wp.name || '';
-        lbDl.href = wp.url;
-        lbDl.download = wp.name || '';
+        lbDl.onclick = () => { downloadFile(wp.url, wp.name || ''); };
         lb.classList.add('open');
       });
 
@@ -926,7 +996,14 @@ async function init() {
 
       const meta = document.createElement('div');
       meta.className = 'folder-meta';
-      meta.innerHTML = `<div class="folder-name">${f.anime}</div><div class="folder-count">${f.count} wallpaper${f.count === 1 ? '' : 's'}</div>`;
+      const fnDiv = document.createElement('div');
+      fnDiv.className = 'folder-name';
+      fnDiv.textContent = f.anime;
+      const fcDiv = document.createElement('div');
+      fcDiv.className = 'folder-count';
+      fcDiv.textContent = `${f.count} wallpaper${f.count === 1 ? '' : 's'}`;
+      meta.appendChild(fnDiv);
+      meta.appendChild(fcDiv);
 
       card.innerHTML = folderSvg;
       card.appendChild(img);
