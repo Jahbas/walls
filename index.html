@@ -1005,6 +1005,7 @@ async function init() {
   folderDownloadBtn.addEventListener('click', () => {
     const folder = allWallpapers.filter(w => w.anime === state.activeFolder);
     if (folder.length === 0) return;
+    if (!confirm(`download ${folder.length} wallpapers from "${state.activeFolder}"?`)) return;
     folderDownloadBtn.disabled = true;
     const orig = folderDownloadBtn.innerHTML;
     folder.forEach((wp, i) => {
