@@ -55,6 +55,10 @@
     gap: 20px;
   }
 
+  .grid:empty {
+    display: none;
+  }
+
   .card {
     position: relative;
     border-radius: 6px;
@@ -118,15 +122,21 @@
     border-radius: 50%;
     background: rgba(255,255,255,0.1);
     border: none;
-    color: var(--text);
-    font-size: 14px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     transition: background 0.15s ease;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+  }
+
+  .card .download svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--text);
+    fill: none;
+    stroke-width: 1.5;
   }
 
   .card .download:hover {
@@ -180,13 +190,19 @@
     border-radius: 50%;
     background: rgba(255,255,255,0.08);
     border: none;
-    color: var(--text);
-    font-size: 18px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background 0.15s ease;
+  }
+
+  .lightbox .close svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--text);
+    fill: none;
+    stroke-width: 1.5;
   }
 
   .lightbox .close:hover {
@@ -198,7 +214,7 @@
     bottom: 32px;
     left: 50%;
     transform: translateX(-50%);
-    padding: 8px 18px;
+    padding: 8px 18px 8px 14px;
     border-radius: 6px;
     background: rgba(255,255,255,0.08);
     border: none;
@@ -208,10 +224,40 @@
     cursor: pointer;
     transition: background 0.15s ease;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lightbox .dl svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--text);
+    fill: none;
+    stroke-width: 1.5;
   }
 
   .lightbox .dl:hover {
     background: rgba(255,255,255,0.15);
+  }
+
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 80px 0;
+    color: var(--mute);
+    font-size: 14px;
+  }
+
+  .empty svg {
+    width: 40px;
+    height: 40px;
+    stroke: var(--mute);
+    fill: none;
+    stroke-width: 1.2;
+    opacity: 0.5;
   }
 
   @media (max-width: 768px) {
@@ -233,10 +279,20 @@
 
 <div class="grid" id="grid"></div>
 
+<div class="empty" id="empty">
+  <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+  <span>no wallpapers yet &mdash; add some to wallpapers.json</span>
+</div>
+
 <div class="lightbox" id="lightbox">
-  <button class="close" aria-label="Close">&times;</button>
+  <button class="close" aria-label="Close">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
   <img src="" alt="">
-  <a class="dl" download href="">download</a>
+  <a class="dl" download href="">
+    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    download
+  </a>
 </div>
 
 <script>
@@ -244,12 +300,25 @@ async function init() {
   const res = await fetch('wallpapers.json');
   const wallpapers = await res.json();
 
-  document.getElementById('count').textContent = `${wallpapers.length} wallpaper${wallpapers.length === 1 ? '' : 's'}`;
-
+  const countEl = document.getElementById('count');
   const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
   const lbDl = lb.querySelector('.dl');
+
+  countEl.textContent = wallpapers.length
+    ? `${wallpapers.length} wallpaper${wallpapers.length === 1 ? '' : 's'}`
+    : '';
+
+  if (wallpapers.length === 0) {
+    empty.style.display = 'flex';
+    return;
+  }
+
+  empty.style.display = 'none';
+
+  const downloadSvg = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
   wallpapers.forEach((wp, i) => {
     const card = document.createElement('div');
@@ -269,7 +338,7 @@ async function init() {
 
     const dl = document.createElement('button');
     dl.className = 'download';
-    dl.innerHTML = '&#8595;';
+    dl.innerHTML = downloadSvg;
     dl.title = 'Download';
     dl.addEventListener('click', e => {
       e.stopPropagation();
