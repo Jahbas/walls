@@ -32,7 +32,10 @@
   }
 
   header {
-    margin-bottom: 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
   }
 
   h1 {
@@ -42,25 +45,43 @@
     color: var(--text);
   }
 
-  .toolbar {
-    display: flex;
+  .breadcrumb {
+    font-size: 13px;
+    color: var(--mute);
+    display: none;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .breadcrumb.show { display: flex; }
+
+  .breadcrumb button {
+    background: none;
+    border: none;
+    color: var(--mute);
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    padding: 2px 0;
+  }
+
+  .breadcrumb button:hover { color: var(--text); }
+
+  .breadcrumb span { color: var(--text); }
+
+  .search-row {
+    margin-bottom: 16px;
   }
 
   .search {
-    flex: 1;
-    min-width: 200px;
-    max-width: 320px;
-    height: 34px;
-    padding: 0 12px;
+    width: 100%;
+    height: 38px;
+    padding: 0 14px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 7px;
     color: var(--text);
-    font-size: 13px;
+    font-size: 14px;
     font-family: inherit;
     outline: none;
     transition: border-color 0.15s ease;
@@ -69,11 +90,20 @@
   .search::placeholder { color: var(--mute); }
   .search:focus { border-color: #333; }
 
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
   .pills {
     display: flex;
     align-items: center;
     gap: 6px;
     flex-wrap: wrap;
+    flex: 1;
   }
 
   .pill {
@@ -108,10 +138,10 @@
     to { opacity: 1; transform: scale(1); }
   }
 
-  .filter-btn {
-    width: 34px;
-    height: 34px;
-    border-radius: 6px;
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 7px;
     background: var(--surface);
     border: 1px solid var(--border);
     cursor: pointer;
@@ -123,38 +153,42 @@
     flex-shrink: 0;
   }
 
-  .filter-btn svg {
-    width: 15px;
-    height: 15px;
+  .icon-btn svg {
+    width: 16px;
+    height: 16px;
     stroke: var(--text);
     fill: none;
     stroke-width: 1.5;
   }
 
-  .filter-btn:hover, .filter-btn.active {
+  .icon-btn:hover { background: var(--active); border-color: #333; }
+
+  .icon-btn.active {
     background: var(--active);
-    border-color: #333;
+    border-color: #444;
   }
 
-  .filter-btn .dot {
+  .icon-btn.active svg { stroke: #fff; }
+
+  .icon-btn .dot {
     position: absolute;
     top: 6px;
     right: 6px;
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: #fff;
     display: none;
   }
 
-  .filter-btn.has-filters .dot { display: block; }
+  .icon-btn.has-dot .dot { display: block; }
 
   .filter-panel {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     display: none;
     animation: panelIn 0.15s ease;
   }
@@ -166,43 +200,44 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .filter-section {
-    margin-bottom: 18px;
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
   }
 
-  .filter-section:last-child { margin-bottom: 0; }
+  .filter-group {
+    min-width: 140px;
+  }
 
   .filter-label {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
     color: var(--mute);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     margin-bottom: 8px;
   }
 
   .filter-options {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 5px;
   }
 
   .filter-option {
-    padding: 5px 12px;
-    border-radius: 5px;
+    padding: 4px 10px;
+    border-radius: 4px;
     background: var(--pill);
     border: 1px solid var(--border);
     color: var(--mute);
     font-size: 12px;
     font-family: inherit;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.12s ease;
   }
 
-  .filter-option:hover {
-    color: var(--text);
-    border-color: #333;
-  }
+  .filter-option:hover { color: var(--text); border-color: #333; }
 
   .filter-option.selected {
     background: var(--active);
@@ -213,48 +248,42 @@
   .filter-toggle {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 5px 12px;
-    border-radius: 5px;
+    gap: 7px;
+    padding: 4px 10px;
+    border-radius: 4px;
     background: var(--pill);
     border: 1px solid var(--border);
     color: var(--mute);
     font-size: 12px;
     font-family: inherit;
     cursor: pointer;
-    transition: all 0.15s ease;
+    transition: all 0.12s ease;
   }
 
-  .filter-toggle.on {
-    background: var(--active);
-    border-color: #444;
-    color: var(--text);
-  }
+  .filter-toggle.on { background: var(--active); border-color: #444; color: var(--text); }
 
   .filter-toggle .toggle-dot {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     background: var(--border);
-    transition: background 0.15s ease;
+    transition: background 0.12s ease;
   }
 
   .filter-toggle.on .toggle-dot { background: #fff; }
 
   .anime-list {
     margin-top: 8px;
-    display: none;
+    display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 5px;
   }
-
-  .anime-list.show { display: flex; }
 
   .count-bar {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   .count {
@@ -263,9 +292,7 @@
     font-variant-numeric: tabular-nums;
   }
 
-  .count .filtered {
-    color: var(--text);
-  }
+  .count .filtered { color: var(--text); }
 
   .grid {
     display: grid;
@@ -273,7 +300,7 @@
     gap: 20px;
   }
 
-  .card {
+  .card, .folder-card {
     position: relative;
     border-radius: 6px;
     overflow: hidden;
@@ -285,12 +312,12 @@
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
 
-  .card:hover {
+  .card:hover, .folder-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 40px var(--shadow);
   }
 
-  .card img {
+  .card img, .folder-card img {
     display: block;
     width: 100%;
     aspect-ratio: 16/9;
@@ -298,7 +325,7 @@
     transition: transform 0.4s ease;
   }
 
-  .card:hover img { transform: scale(1.03); }
+  .card:hover img, .folder-card:hover img { transform: scale(1.03); }
 
   .card .meta {
     position: absolute;
@@ -316,16 +343,28 @@
 
   .card:hover .meta { opacity: 1; }
 
-  .card .name {
+  .card .name, .folder-card .folder-name {
     font-size: 12px;
     font-weight: 500;
     color: var(--text);
   }
 
-  .card .res {
+  .card .res, .folder-card .folder-count {
     font-size: 11px;
     color: rgba(255,255,255,0.5);
     font-variant-numeric: tabular-nums;
+  }
+
+  .folder-card .folder-meta {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 16px 16px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
   }
 
   .card .download {
@@ -385,10 +424,15 @@
 
   .lightbox.open img { transform: scale(1); }
 
-  .lightbox .close {
+  .lightbox .top-actions {
     position: absolute;
     top: 24px;
     right: 24px;
+    display: flex;
+    gap: 8px;
+  }
+
+  .lightbox .top-actions button, .lightbox .top-actions a {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -399,47 +443,20 @@
     align-items: center;
     justify-content: center;
     transition: background 0.15s ease;
+    text-decoration: none;
   }
 
-  .lightbox .close svg {
+  .lightbox .top-actions button:hover, .lightbox .top-actions a:hover {
+    background: rgba(255,255,255,0.15);
+  }
+
+  .lightbox .top-actions svg {
     width: 16px;
     height: 16px;
     stroke: var(--text);
     fill: none;
     stroke-width: 1.5;
   }
-
-  .lightbox .close:hover { background: rgba(255,255,255,0.15); }
-
-  .lightbox .dl {
-    position: absolute;
-    bottom: 32px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 8px 18px 8px 14px;
-    border-radius: 6px;
-    background: rgba(255,255,255,0.08);
-    border: none;
-    color: var(--text);
-    font-size: 13px;
-    font-family: inherit;
-    cursor: pointer;
-    transition: background 0.15s ease;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .lightbox .dl svg {
-    width: 14px;
-    height: 14px;
-    stroke: var(--text);
-    fill: none;
-    stroke-width: 1.5;
-  }
-
-  .lightbox .dl:hover { background: rgba(255,255,255,0.15); }
 
   .empty {
     display: flex;
@@ -463,53 +480,67 @@
   @media (max-width: 768px) {
     body { padding: 32px 16px 64px; }
     .grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-    .toolbar { flex-direction: column; align-items: stretch; }
-    .search { max-width: none; }
-    .pills { order: 3; }
+    .filter-row { flex-direction: column; gap: 16px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .card { animation: none; opacity: 1; transform: none; }
+    .card, .folder-card { animation: none; opacity: 1; transform: none; }
     .lightbox img { transition: none; }
   }
 </style>
 </head>
 <body>
-<header><h1>highpapers</h1></header>
+
+<header>
+  <h1>highpapers</h1>
+  <div class="breadcrumb" id="breadcrumb">
+    <button id="breadcrumbBack">all</button>
+    <span>/</span>
+    <span id="breadcrumbCurrent"></span>
+  </div>
+</header>
+
+<div class="search-row">
+  <input type="text" class="search" id="search" placeholder="search...">
+</div>
 
 <div class="toolbar">
-  <input type="text" class="search" id="search" placeholder="search...">
-  <div class="pills" id="pills"></div>
-  <button class="filter-btn" id="filterBtn" aria-label="Filters">
-    <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="6" y1="18" x2="18" y2="18"/><circle cx="16" cy="6" r="1.5"/><circle cx="8" cy="12" r="1.5"/><circle cx="14" cy="18" r="1.5"/></svg>
+  <button class="icon-btn" id="folderBtn" aria-label="Folder view">
+    <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+  </button>
+  <button class="icon-btn" id="filterBtn" aria-label="Filters">
+    <svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
     <span class="dot"></span>
   </button>
+  <div class="pills" id="pills"></div>
 </div>
 
 <div class="filter-panel" id="filterPanel">
-  <div class="filter-section">
-    <div class="filter-label">Resolution</div>
-    <div class="filter-options" id="resFilters">
-      <button class="filter-option" data-val="4k">4K</button>
-      <button class="filter-option" data-val="1080p">1080p</button>
-      <button class="filter-option" data-val="custom">other</button>
+  <div class="filter-row">
+    <div class="filter-group">
+      <div class="filter-label">Resolution</div>
+      <div class="filter-options" id="resFilters">
+        <button class="filter-option" data-val="4k">4K</button>
+        <button class="filter-option" data-val="1080p">1080p</button>
+        <button class="filter-option" data-val="custom">other</button>
+      </div>
     </div>
-  </div>
-  <div class="filter-section">
-    <div class="filter-label">Screen</div>
-    <div class="filter-options" id="screenFilters">
-      <button class="filter-option" data-val="3840x2160">3840x2160</button>
-      <button class="filter-option" data-val="1080x1920">1080x1920</button>
-      <button class="filter-option" data-val="custom">other</button>
+    <div class="filter-group">
+      <div class="filter-label">Screen</div>
+      <div class="filter-options" id="screenFilters">
+        <button class="filter-option" data-val="3840x2160">3840x2160</button>
+        <button class="filter-option" data-val="1080x1920">1080x1920</button>
+        <button class="filter-option" data-val="custom">other</button>
+      </div>
     </div>
-  </div>
-  <div class="filter-section">
-    <div class="filter-label">Anime</div>
-    <button class="filter-toggle" id="animeToggle">
-      <span class="toggle-dot"></span>
-      anime
-    </button>
-    <div class="anime-list" id="animeList"></div>
+    <div class="filter-group">
+      <div class="filter-label">Anime</div>
+      <button class="filter-toggle" id="animeToggle">
+        <span class="toggle-dot"></span>
+        all anime
+      </button>
+      <div class="anime-list" id="animeList"></div>
+    </div>
   </div>
 </div>
 
@@ -525,14 +556,15 @@
 </div>
 
 <div class="lightbox" id="lightbox">
-  <button class="close" aria-label="Close">
-    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
+  <div class="top-actions">
+    <a class="lb-dl" download href="">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    </a>
+    <button class="lb-close" aria-label="Close">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
   <img src="" alt="">
-  <a class="dl" download href="">
-    <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    download
-  </a>
 </div>
 
 <script>
@@ -542,8 +574,12 @@ const state = {
   screen: [],
   animeEnabled: false,
   animes: [],
-  allAnimes: []
+  allAnimes: [],
+  folderMode: false,
+  activeFolder: null,
 };
+
+let allWallpapers = [];
 
 function resCat(w, h) {
   if (w >= 3840 && h >= 2160) return '4k';
@@ -589,10 +625,11 @@ function updatePills() {
   });
   const fb = document.getElementById('filterBtn');
   const has = state.res.length > 0 || state.screen.length > 0 || state.animes.length > 0;
-  fb.classList.toggle('has-filters', has);
+  fb.classList.toggle('has-dot', has);
   if (state.animes.length > 0) fb.classList.add('active');
 
   document.getElementById('animeToggle').classList.toggle('on', state.animes.length > 0);
+  document.getElementById('folderBtn').classList.toggle('active', state.folderMode);
 }
 
 function matches(wp) {
@@ -609,9 +646,9 @@ function matches(wp) {
 
 async function init() {
   const res = await fetch('wallpapers.json');
-  const all = await res.json();
+  allWallpapers = await res.json();
 
-  state.allAnimes = [...new Set(all.map(w => w.anime).filter(Boolean))].sort();
+  state.allAnimes = [...new Set(allWallpapers.map(w => w.anime).filter(Boolean))].sort();
 
   const animeList = document.getElementById('animeList');
   state.allAnimes.forEach(a => {
@@ -656,8 +693,17 @@ async function init() {
 
   const filterBtn = document.getElementById('filterBtn');
   const filterPanel = document.getElementById('filterPanel');
-  filterBtn.addEventListener('click', () => {
-    filterPanel.classList.toggle('open');
+  filterBtn.addEventListener('click', () => filterPanel.classList.toggle('open'));
+
+  document.getElementById('folderBtn').addEventListener('click', () => {
+    state.folderMode = !state.folderMode;
+    state.activeFolder = null;
+    update();
+  });
+
+  document.getElementById('breadcrumbBack').addEventListener('click', () => {
+    state.activeFolder = null;
+    update();
   });
 
   const search = document.getElementById('search');
@@ -670,43 +716,67 @@ async function init() {
     }, 150);
   });
 
-  function updateAnimeOptions() {
-    document.querySelectorAll('#animeList .filter-option').forEach(btn => {
-      btn.classList.toggle('selected', state.animes.includes(btn.textContent));
-    });
-    const list = document.getElementById('animeList');
-    list.classList.toggle('show', state.animes.length > 0 || state.allAnimes.length > 0);
-    // always show when panel open
-    if (filterPanel.classList.contains('open')) list.classList.add('show');
-  }
-
-  function updateResOptions() {
-    document.querySelectorAll('#resFilters .filter-option').forEach(btn => {
-      btn.classList.toggle('selected', state.res.includes(btn.dataset.val));
-    });
-  }
-
-  function updateScreenOptions() {
-    document.querySelectorAll('#screenFilters .filter-option').forEach(btn => {
-      btn.classList.toggle('selected', state.screen.includes(btn.dataset.val));
-    });
-  }
-
   const grid = document.getElementById('grid');
   const empty = document.getElementById('empty');
   const countEl = document.getElementById('count');
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
-  const lbDl = lb.querySelector('.dl');
+  const lbDl = lb.querySelector('.lb-dl');
+  const lbClose = lb.querySelector('.lb-close');
 
+  const folderSvg = '<svg viewBox="0 0 24 24" style="position:absolute;top:12px;left:12px;width:20px;height:20px;stroke:rgba(255,255,255,0.6);fill:none;stroke-width:1.5;z-index:1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>';
   const downloadSvg = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
   function render() {
-    const filtered = all.filter(matches);
     grid.innerHTML = '';
-    empty.style.display = filtered.length === 0 ? 'flex' : 'none';
+    empty.style.display = 'none';
 
-    const total = all.length;
+    const bc = document.getElementById('breadcrumb');
+    const bcCur = document.getElementById('breadcrumbCurrent');
+
+    if (state.folderMode && !state.activeFolder) {
+      bc.classList.remove('show');
+      bcCur.textContent = '';
+      state.animes = [];
+      state.animeEnabled = false;
+      updateAnimeOptions();
+      updatePills();
+
+      const folders = state.allAnimes.map(anime => ({
+        anime,
+        preview: allWallpapers.find(w => w.anime === anime),
+        count: allWallpapers.filter(w => w.anime === anime).length,
+      }));
+
+      if (state.search) {
+        const q = state.search.toLowerCase();
+        const filtered = folders.filter(f => f.anime.toLowerCase().includes(q));
+        renderedFolders(filtered);
+        countEl.innerHTML = `${filtered.length} folder${filtered.length === 1 ? '' : 's'}`;
+      } else {
+        renderedFolders(folders);
+        countEl.innerHTML = `${folders.length} folder${folders.length === 1 ? '' : 's'}`;
+      }
+      return;
+    }
+
+    let pool = allWallpapers;
+    if (state.folderMode && state.activeFolder) {
+      pool = allWallpapers.filter(w => w.anime === state.activeFolder);
+      bc.classList.add('show');
+      bcCur.textContent = state.activeFolder;
+    } else if (!state.folderMode) {
+      bc.classList.remove('show');
+      bcCur.textContent = '';
+    }
+
+    const filtered = pool.filter(matches);
+
+    if (filtered.length === 0) {
+      empty.style.display = 'flex';
+    }
+
+    const total = pool.length;
     const shown = filtered.length;
     if (total === shown) {
       countEl.innerHTML = `${total} wallpaper${total === 1 ? '' : 's'}`;
@@ -717,7 +787,7 @@ async function init() {
     filtered.forEach((wp, i) => {
       const card = document.createElement('div');
       card.className = 'card';
-      card.style.animationDelay = `${i * 0.04}s`;
+      card.style.animationDelay = `${i * 0.03}s`;
 
       const img = document.createElement('img');
       img.src = wp.url;
@@ -759,6 +829,58 @@ async function init() {
     });
   }
 
+  function renderedFolders(folders) {
+    folders.forEach((f, i) => {
+      const card = document.createElement('div');
+      card.className = 'folder-card';
+      card.style.animationDelay = `${i * 0.04}s`;
+
+      const img = document.createElement('img');
+      img.src = f.preview.url;
+      img.alt = f.anime;
+      img.loading = 'lazy';
+
+      const meta = document.createElement('div');
+      meta.className = 'folder-meta';
+      meta.innerHTML = `<div class="folder-name">${f.anime}</div><div class="folder-count">${f.count} wallpaper${f.count === 1 ? '' : 's'}</div>`;
+
+      card.innerHTML = folderSvg;
+      card.appendChild(img);
+      card.appendChild(meta);
+
+      card.addEventListener('click', () => {
+        state.activeFolder = f.anime;
+        state.search = '';
+        document.getElementById('search').value = '';
+        state.res = [];
+        state.screen = [];
+        state.animes = [];
+        state.animeEnabled = false;
+        update();
+      });
+
+      grid.appendChild(card);
+    });
+  }
+
+  function updateResOptions() {
+    document.querySelectorAll('#resFilters .filter-option').forEach(btn => {
+      btn.classList.toggle('selected', state.res.includes(btn.dataset.val));
+    });
+  }
+
+  function updateScreenOptions() {
+    document.querySelectorAll('#screenFilters .filter-option').forEach(btn => {
+      btn.classList.toggle('selected', state.screen.includes(btn.dataset.val));
+    });
+  }
+
+  function updateAnimeOptions() {
+    document.querySelectorAll('#animeList .filter-option').forEach(btn => {
+      btn.classList.toggle('selected', state.animes.includes(btn.textContent));
+    });
+  }
+
   function update() {
     updatePills();
     updateResOptions();
@@ -769,7 +891,7 @@ async function init() {
 
   update();
 
-  lb.querySelector('.close').addEventListener('click', () => lb.classList.remove('open'));
+  lbClose.addEventListener('click', () => lb.classList.remove('open'));
   lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
 }
