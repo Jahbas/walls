@@ -797,9 +797,8 @@ function updatePills() {
   fb.classList.toggle('has-dot', has);
   if (state.animes.length > 0) fb.classList.add('active');
 
-  animeToggleEl.classList.toggle('on', state.animes.length > 0);
-  const folderBtn = document.getElementById('folderBtn');
-  folderBtn.classList.toggle('active', state.folderMode);
+  document.getElementById('animeToggle').classList.toggle('on', state.animes.length > 0);
+  document.getElementById('folderBtn').classList.toggle('active', state.folderMode);
 }
 
 function contradictoryFilters() {
@@ -852,9 +851,6 @@ async function init() {
   }
 
   loading.style.display = 'none';
-
-  console.log('loaded', allWallpapers.length, 'wallpapers');
-  console.log('animes', [...new Set(allWallpapers.map(w => w.anime))]);
 
   state.allAnimes = [...new Set(allWallpapers.map(w => w.anime).filter(Boolean))].sort();
 
@@ -943,7 +939,6 @@ async function init() {
   const folderNav = document.getElementById('folderNav');
   const folderBackBtn = document.getElementById('folderBack');
   const folderDownloadBtn = document.getElementById('folderDownload');
-  const animeToggleEl = document.getElementById('animeToggle');
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
   const lbDl = lb.querySelector('.lb-dl');
@@ -1071,7 +1066,7 @@ async function init() {
       empty.style.display = 'flex';
       emptyMsg.textContent = contradictoryFilters()
         ? 'no wallpapers match — try removing conflicting filters'
-        : `no wallpapers match (pool: ${pool.length}, search: "${state.search}", res: [${state.res}], screen: [${state.screen}], animes: [${state.animes}], folderMode: ${state.folderMode}, activeFolder: ${state.activeFolder || 'none'})`;
+        : 'no wallpapers match';
     }
 
     const total = pool.length;
