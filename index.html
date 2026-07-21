@@ -759,7 +759,6 @@ const state = {
   search: '',
   res: [],
   screen: [],
-  animeEnabled: false,
   animes: [],
   allAnimes: [],
   folderMode: false,
@@ -796,7 +795,6 @@ function pill(label, group, val) {
     if (group === 'screen') state.screen = state.screen.filter(v => v !== val);
     if (group === 'anime') {
       state.animes = state.animes.filter(v => v !== val);
-      if (state.animes.length === 0) state.animeEnabled = false;
     }
     update();
   });
@@ -824,11 +822,18 @@ function updatePills() {
   fb.classList.toggle('has-dot', has);
   if (state.animes.length > 0) fb.classList.add('active');
 
-  document.getElementById('animeToggle').classList.toggle('on', state.animes.length > 0);
-  document.getElementById('folderBtn').classList.toggle('active', state.folderMode);
+  animeToggleEl.classList.toggle('on', state.animes.length > 0);
+  const folderBtn = document.getElementById('folderBtn');
+  folderBtn.classList.toggle('active', state.folderMode);
 }
 
-function matches(wp) {
+function contradictoryFilters() {
+  if (state.res.length > 1) return true;
+  if (state.screen.length > 1) return true;
+  if (state.res.includes('4k') && state.screen.includes('1920x1080')) return true;
+  if (state.res.includes('1080p') && state.screen.includes('3840x2160')) return true;
+  return false;
+}
   const [w, h] = wp.resolution.split('x').map(Number);
   if (state.search) {
     const q = state.search.toLowerCase();
@@ -953,6 +958,9 @@ async function init() {
   const folderNav = document.getElementById('folderNav');
   const folderBackBtn = document.getElementById('folderBack');
   const folderDownloadBtn = document.getElementById('folderDownload');
+  const breadcrumb = document.getElementById('breadcrumb');
+  const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
+  const animeToggleEl = document.getElementById('animeToggle');
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
   const lbDl = lb.querySelector('.lb-dl');
@@ -1014,8 +1022,20 @@ async function init() {
 
   folderDownloadBtn.addEventListener('click', () => {
     const folder = allWallpapers.filter(w => w.anime === state.activeFolder);
+    if (folder.length === 0) return;
+    folderDownloadBtn.disabled = true;
+    const orig = folderDownloadBtn.innerHTML;
     folder.forEach((wp, i) => {
-      setTimeout(() => downloadFile(wp.url, wp.name || ''), i * 400);
+      setTimeout(() => {
+        downloadFile(wp.url, wp.name || '');
+        folderDownloadBtn.innerHTML = `<svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--mute);fill:none;stroke-width:2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>${i + 1}/${folder.length}`;
+        if (i === folder.length - 1) {
+          setTimeout(() => {
+            folderDownloadBtn.innerHTML = orig;
+            folderDownloadBtn.disabled = false;
+          }, 800);
+        }
+      }, i * 400);
     });
   });
 
@@ -1026,21 +1046,17 @@ async function init() {
     grid.innerHTML = '';
     empty.style.display = 'none';
 
-    const bc = document.getElementById('breadcrumb');
-    const bcCur = document.getElementById('breadcrumbCurrent');
-
-    if (state.folderMode && !state.activeFolder) {
-      bc.classList.remove('show');
-      bcCur.textContent = '';
+      if (state.folderMode && !state.activeFolder) {
+      breadcrumb.classList.remove('show');
+      breadcrumbCurrent.textContent = '';
       folderNav.classList.remove('show');
       state.animes = [];
-      state.animeEnabled = false;
       updateAnimeOptions();
       updatePills();
 
       const folders = state.allAnimes.map(anime => ({
         anime,
-        preview: allWallpapers.find(w => w.anime === anime),
+        preview: allWallpapers.find(w => w.anime === anime) || null,
         count: allWallpapers.filter(w => w.anime === anime).length,
       }));
 
@@ -1059,12 +1075,12 @@ async function init() {
     let pool = allWallpapers;
     if (state.folderMode && state.activeFolder) {
       pool = allWallpapers.filter(w => w.anime === state.activeFolder);
-      bc.classList.add('show');
-      bcCur.textContent = state.activeFolder;
+      breadcrumb.classList.add('show');
+      breadcrumbCurrent.textContent = state.activeFolder;
       folderNav.classList.add('show');
     } else if (!state.folderMode) {
-      bc.classList.remove('show');
-      bcCur.textContent = '';
+      breadcrumb.classList.remove('show');
+      breadcrumbCurrent.textContent = '';
       folderNav.classList.remove('show');
     }
 
@@ -1072,6 +1088,9 @@ async function init() {
 
     if (filtered.length === 0) {
       empty.style.display = 'flex';
+      emptyMsg.textContent = contradictoryFilters()
+        ? 'no wallpapers match — try removing conflicting filters'
+        : 'no wallpapers match';
     }
 
     const total = pool.length;
@@ -1135,10 +1154,13 @@ async function init() {
       card.className = 'folder-card';
       card.style.animationDelay = `${i * 0.04}s`;
 
-      const img = document.createElement('img');
-      img.src = f.preview.url;
-      img.alt = f.anime;
-      img.loading = 'lazy';
+      if (f.preview) {
+        const img = document.createElement('img');
+        img.src = f.preview.url;
+        img.alt = f.anime;
+        img.loading = 'lazy';
+        card.appendChild(img);
+      }
 
       const meta = document.createElement('div');
       meta.className = 'folder-meta';
@@ -1159,10 +1181,8 @@ async function init() {
         state.activeFolder = f.anime;
         state.search = '';
         document.getElementById('search').value = '';
-        state.res = [];
-        state.screen = [];
+        document.getElementById('searchClear').style.display = 'none';
         state.animes = [];
-        state.animeEnabled = false;
         update();
       });
 
