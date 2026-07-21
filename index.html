@@ -70,11 +70,14 @@
   .breadcrumb span { color: var(--text); }
 
   .search-row {
-    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
   }
 
   .search {
-    width: 100%;
+    flex: 1;
     height: 38px;
     padding: 0 14px;
     background: var(--surface);
@@ -85,15 +88,16 @@
     font-family: inherit;
     outline: none;
     transition: border-color 0.15s ease;
+    min-width: 0;
   }
 
   .search::placeholder { color: var(--mute); }
   .search:focus { border-color: #333; }
 
-  .toolbar {
+  .pills-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     margin-bottom: 20px;
     flex-wrap: wrap;
   }
@@ -103,7 +107,6 @@
     align-items: center;
     gap: 6px;
     flex-wrap: wrap;
-    flex: 1;
   }
 
   .pill {
@@ -293,6 +296,39 @@
   }
 
   .count .filtered { color: var(--text); }
+
+  .folder-nav {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    margin-left: 10px;
+  }
+
+  .folder-nav.show { display: flex; }
+
+  .folder-nav button {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    background: var(--pill);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.12s ease;
+  }
+
+  .folder-nav button svg {
+    width: 12px;
+    height: 12px;
+    stroke: var(--mute);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .folder-nav button:hover { background: var(--active); }
+  .folder-nav button:hover svg { stroke: var(--text); }
 
   .grid {
     display: grid;
@@ -502,9 +538,6 @@
 
 <div class="search-row">
   <input type="text" class="search" id="search" placeholder="search...">
-</div>
-
-<div class="toolbar">
   <button class="icon-btn" id="folderBtn" aria-label="Folder view">
     <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
   </button>
@@ -512,8 +545,9 @@
     <svg viewBox="0 0 24 24"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
     <span class="dot"></span>
   </button>
-  <div class="pills" id="pills"></div>
 </div>
+
+<div class="pills-row" id="pills"></div>
 
 <div class="filter-panel" id="filterPanel">
   <div class="filter-row">
@@ -546,6 +580,14 @@
 
 <div class="count-bar">
   <span class="count" id="count"></span>
+  <div class="folder-nav" id="folderNav">
+    <button id="prevFolder" aria-label="Previous folder">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button id="nextFolder" aria-label="Next folder">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -719,10 +761,29 @@ async function init() {
   const grid = document.getElementById('grid');
   const empty = document.getElementById('empty');
   const countEl = document.getElementById('count');
+  const folderNav = document.getElementById('folderNav');
+  const prevFolderBtn = document.getElementById('prevFolder');
+  const nextFolderBtn = document.getElementById('nextFolder');
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
   const lbDl = lb.querySelector('.lb-dl');
   const lbClose = lb.querySelector('.lb-close');
+
+  prevFolderBtn.addEventListener('click', () => {
+    const idx = state.allAnimes.indexOf(state.activeFolder);
+    if (idx > 0) {
+      state.activeFolder = state.allAnimes[idx - 1];
+      update();
+    }
+  });
+
+  nextFolderBtn.addEventListener('click', () => {
+    const idx = state.allAnimes.indexOf(state.activeFolder);
+    if (idx < state.allAnimes.length - 1) {
+      state.activeFolder = state.allAnimes[idx + 1];
+      update();
+    }
+  });
 
   const folderSvg = '<svg viewBox="0 0 24 24" style="position:absolute;top:12px;left:12px;width:20px;height:20px;stroke:rgba(255,255,255,0.6);fill:none;stroke-width:1.5;z-index:1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>';
   const downloadSvg = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
@@ -737,6 +798,7 @@ async function init() {
     if (state.folderMode && !state.activeFolder) {
       bc.classList.remove('show');
       bcCur.textContent = '';
+      folderNav.classList.remove('show');
       state.animes = [];
       state.animeEnabled = false;
       updateAnimeOptions();
@@ -765,9 +827,11 @@ async function init() {
       pool = allWallpapers.filter(w => w.anime === state.activeFolder);
       bc.classList.add('show');
       bcCur.textContent = state.activeFolder;
+      folderNav.classList.add('show');
     } else if (!state.folderMode) {
       bc.classList.remove('show');
       bcCur.textContent = '';
+      folderNav.classList.remove('show');
     }
 
     const filtered = pool.filter(matches);
