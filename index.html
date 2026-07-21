@@ -821,17 +821,11 @@ function matches(wp) {
   return true;
 }
 
-async function downloadFile(url, filename) {
-  try {
-    const r = await fetch(url);
-    const blob = await r.blob();
-    const obj = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = obj;
-    a.download = filename || '';
-    a.click();
-    setTimeout(() => URL.revokeObjectURL(obj), 1000);
-  } catch (_) {}
+function triggerDownload(url, filename) {
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename || '';
+  a.click();
 }
 
 async function init() {
@@ -956,7 +950,7 @@ async function init() {
     document.body.classList.add('lb-open');
     lbImg.src = wp.url;
     lbImg.alt = wp.name || '';
-    lbDl.onclick = () => { downloadFile(wp.url, wp.name || ''); };
+    lbDl.onclick = () => { triggerDownload(wp.url, wp.name || ''); };
     lbPrev.style.display = lbImages.length > 1 ? 'flex' : 'none';
     lbNext.style.display = lbImages.length > 1 ? 'flex' : 'none';
     lbClose.focus();
@@ -974,7 +968,7 @@ async function init() {
     lb.classList.add('loading-img');
     lbImg.src = wp.url;
     lbImg.alt = wp.name || '';
-    lbDl.onclick = () => { downloadFile(wp.url, wp.name || ''); };
+    lbDl.onclick = () => { triggerDownload(wp.url, wp.name || ''); };
   }
 
   lbImg.addEventListener('load', () => lb.classList.remove('loading-img'));
@@ -1005,20 +999,11 @@ async function init() {
   folderDownloadBtn.addEventListener('click', () => {
     const folder = allWallpapers.filter(w => w.anime === state.activeFolder);
     if (folder.length === 0) return;
-    if (!confirm(`download ${folder.length} wallpapers from "${state.activeFolder}"?`)) return;
-    folderDownloadBtn.disabled = true;
-    const orig = folderDownloadBtn.innerHTML;
-    folder.forEach((wp, i) => {
-      setTimeout(() => {
-        downloadFile(wp.url, wp.name || '');
-        folderDownloadBtn.innerHTML = `<svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--mute);fill:none;stroke-width:2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>${i + 1}/${folder.length}`;
-        if (i === folder.length - 1) {
-          setTimeout(() => {
-            folderDownloadBtn.innerHTML = orig;
-            folderDownloadBtn.disabled = false;
-          }, 800);
-        }
-      }, i * 400);
+    folder.forEach(wp => {
+      const a = document.createElement('a');
+      a.href = wp.url;
+      a.download = wp.name || '';
+      a.click();
     });
   });
 
@@ -1109,7 +1094,7 @@ async function init() {
       dl.title = 'Download';
       dl.addEventListener('click', e => {
         e.stopPropagation();
-        downloadFile(wp.url, wp.name || '');
+        triggerDownload(wp.url, wp.name || '');
       });
 
       meta.appendChild(info);
