@@ -809,6 +809,8 @@ function contradictoryFilters() {
   if (state.res.includes('1080p') && state.screen.includes('3840x2160')) return true;
   return false;
 }
+
+function matches(wp) {
   const [w, h] = wp.resolution.split('x').map(Number);
   if (state.search) {
     const q = state.search.toLowerCase();
