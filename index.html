@@ -76,10 +76,16 @@
     margin-bottom: 12px;
   }
 
-  .search {
+  .search-wrap {
     flex: 1;
+    position: relative;
+    min-width: 0;
+  }
+
+  .search {
+    width: 100%;
     height: 38px;
-    padding: 0 14px;
+    padding: 0 34px 0 14px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 7px;
@@ -88,11 +94,38 @@
     font-family: inherit;
     outline: none;
     transition: border-color 0.15s ease;
-    min-width: 0;
   }
 
   .search::placeholder { color: var(--mute); }
   .search:focus { border-color: #333; }
+
+  .search-clear {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.12s ease;
+  }
+
+  .search-clear svg {
+    width: 12px;
+    height: 12px;
+    stroke: var(--mute);
+    fill: none;
+    stroke-width: 2;
+  }
+
+  .search-clear:hover { background: var(--active); }
+  .search-clear:hover svg { stroke: var(--text); }
 
   .pills-row {
     display: flex;
@@ -474,17 +507,6 @@
 
   .lightbox.open { opacity: 1; pointer-events: auto; }
 
-  .lightbox img {
-    max-width: 92vw;
-    max-height: 90vh;
-    border-radius: 4px;
-    box-shadow: 0 4px 80px rgba(0,0,0,0.5);
-    transform: scale(0.95);
-    transition: transform 0.3s ease;
-  }
-
-  .lightbox.open img { transform: scale(1); }
-
   .lightbox .top-actions {
     position: absolute;
     top: 24px;
@@ -518,6 +540,64 @@
     fill: none;
     stroke-width: 1.5;
   }
+
+  .lightbox .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+    z-index: 1;
+  }
+
+  .lightbox .nav-arrow:hover { background: rgba(255,255,255,0.12); }
+
+  .lightbox .nav-arrow svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--text);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .lightbox .nav-prev { left: 16px; }
+  .lightbox .nav-next { right: 16px; }
+
+  .lightbox .lb-spinner {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-top-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+  }
+
+  .lightbox.loading-img .lb-spinner { display: block; }
+
+  .lightbox.loading-img img { opacity: 0; }
+
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 90vh;
+    border-radius: 4px;
+    box-shadow: 0 4px 80px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease, opacity 0.15s ease;
+  }
+
+  .lightbox.open img { transform: scale(1); opacity: 1; }
+
+  body.lb-open { overflow: hidden; }
 
   .empty {
     display: flex;
@@ -585,7 +665,12 @@
 </header>
 
 <div class="search-row">
-  <input type="text" class="search" id="search" placeholder="search...">
+  <div class="search-wrap">
+    <input type="text" class="search" id="search" placeholder="search...">
+    <button class="search-clear" id="searchClear" aria-label="Clear search" style="display:none">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
   <button class="icon-btn" id="folderBtn" aria-label="Folder view">
     <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
   </button>
@@ -659,6 +744,13 @@
       <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
+  <button class="nav-arrow nav-prev" aria-label="Previous" style="display:none">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="nav-arrow nav-next" aria-label="Next" style="display:none">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="lb-spinner"></div>
   <img src="" alt="">
 </div>
 
@@ -740,7 +832,7 @@ function matches(wp) {
   const [w, h] = wp.resolution.split('x').map(Number);
   if (state.search) {
     const q = state.search.toLowerCase();
-    if (!wp.name.toLowerCase().includes(q) && !(wp.anime || '').toLowerCase().includes(q)) return false;
+    if (!wp.name.toLowerCase().includes(q) && !(wp.anime || '').toLowerCase().includes(q) && !wp.resolution.toLowerCase().includes(q)) return false;
   }
   if (state.res.length > 0 && !state.res.includes(resCat(w, h))) return false;
   if (state.screen.length > 0 && !state.screen.includes(screenCat(w, h))) return false;
@@ -838,13 +930,21 @@ async function init() {
   });
 
   const search = document.getElementById('search');
+  const searchClear = document.getElementById('searchClear');
   let searchTimer;
   search.addEventListener('input', () => {
+    searchClear.style.display = search.value ? 'flex' : 'none';
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
       state.search = search.value;
       update();
     }, 150);
+  });
+  searchClear.addEventListener('click', () => {
+    search.value = '';
+    searchClear.style.display = 'none';
+    state.search = '';
+    update();
   });
 
   const grid = document.getElementById('grid');
@@ -857,6 +957,55 @@ async function init() {
   const lbImg = lb.querySelector('img');
   const lbDl = lb.querySelector('.lb-dl');
   const lbClose = lb.querySelector('.lb-close');
+  const lbPrev = lb.querySelector('.nav-prev');
+  const lbNext = lb.querySelector('.nav-next');
+  let lbImages = [];
+  let lbIndex = 0;
+
+  function openLightbox(wp, images, index) {
+    lbImages = images;
+    lbIndex = index;
+    lb.classList.add('loading-img');
+    lb.classList.add('open');
+    document.body.classList.add('lb-open');
+    lbImg.src = wp.url;
+    lbImg.alt = wp.name || '';
+    lbDl.onclick = () => { downloadFile(wp.url, wp.name || ''); };
+    lbPrev.style.display = lbImages.length > 1 ? 'flex' : 'none';
+    lbNext.style.display = lbImages.length > 1 ? 'flex' : 'none';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    document.body.classList.remove('lb-open');
+    lbImg.src = '';
+  }
+
+  function lbNavigate(dir) {
+    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+    const wp = lbImages[lbIndex];
+    lb.classList.add('loading-img');
+    lbImg.src = wp.url;
+    lbImg.alt = wp.name || '';
+    lbDl.onclick = () => { downloadFile(wp.url, wp.name || ''); };
+  }
+
+  lbImg.addEventListener('load', () => lb.classList.remove('loading-img'));
+  lbImg.addEventListener('error', () => lb.classList.remove('loading-img'));
+
+  lbPrev.addEventListener('click', () => lbNavigate(-1));
+  lbNext.addEventListener('click', () => lbNavigate(1));
+
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbNavigate(-1);
+    if (e.key === 'ArrowRight') lbNavigate(1);
+  });
 
   folderBackBtn.addEventListener('click', () => {
     state.activeFolder = null;
@@ -973,10 +1122,7 @@ async function init() {
       card.appendChild(meta);
 
       card.addEventListener('click', () => {
-        lbImg.src = wp.url;
-        lbImg.alt = wp.name || '';
-        lbDl.onclick = () => { downloadFile(wp.url, wp.name || ''); };
-        lb.classList.add('open');
+        openLightbox(wp, filtered, i);
       });
 
       grid.appendChild(card);
@@ -1048,13 +1194,56 @@ async function init() {
     updateScreenOptions();
     updateAnimeOptions();
     render();
+    pushURL();
   }
 
-  update();
+  function stateToParams() {
+    const p = new URLSearchParams();
+    if (state.search) p.set('q', state.search);
+    if (state.res.length) p.set('res', state.res.join(','));
+    if (state.screen.length) p.set('screen', state.screen.join(','));
+    if (state.animes.length) p.set('anime', state.animes.join(','));
+    if (state.folderMode && state.activeFolder) p.set('folder', state.activeFolder);
+    if (state.folderMode && !state.activeFolder) p.set('view', 'folders');
+    const qs = p.toString();
+    return qs ? '?' + qs : location.pathname;
+  }
 
-  lbClose.addEventListener('click', () => lb.classList.remove('open'));
-  lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+  function pushURL() {
+    const url = stateToParams();
+    if (location.search !== url.slice(url.indexOf('?'))) {
+      history.pushState(null, '', url);
+    }
+  }
+
+  function loadURL() {
+    const p = new URLSearchParams(location.search);
+    state.search = p.get('q') || '';
+    state.res = (p.get('res') || '').split(',').filter(Boolean);
+    state.screen = (p.get('screen') || '').split(',').filter(Boolean);
+    state.animes = (p.get('anime') || '').split(',').filter(Boolean);
+    const folder = p.get('folder');
+    if (folder) {
+      state.folderMode = true;
+      state.activeFolder = folder;
+    } else if (p.get('view') === 'folders') {
+      state.folderMode = true;
+      state.activeFolder = null;
+    }
+    if (state.search) {
+      const search = document.getElementById('search');
+      search.value = state.search;
+      document.getElementById('searchClear').style.display = 'flex';
+    }
+  }
+
+  window.addEventListener('popstate', () => {
+    loadURL();
+    update();
+  });
+
+  loadURL();
+  update();
 }
 
 init();
