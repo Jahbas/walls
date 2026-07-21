@@ -825,7 +825,9 @@ function triggerDownload(url, filename) {
   const a = document.createElement('a');
   a.href = url;
   a.download = filename || '';
+  document.body.appendChild(a);
   a.click();
+  document.body.removeChild(a);
 }
 
 async function init() {
@@ -999,15 +1001,15 @@ async function init() {
   folderDownloadBtn.addEventListener('click', () => {
     const folder = allWallpapers.filter(w => w.anime === state.activeFolder);
     if (folder.length === 0) return;
-    folder.forEach((wp, i) => {
-      setTimeout(() => {
-        const a = document.createElement('a');
-        a.href = wp.url;
-        a.download = wp.name || '';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      }, i * 100);
+
+    folder.forEach(wp => {
+      const a = document.createElement('a');
+      a.href = wp.url;
+      a.download = wp.name || '';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => document.body.removeChild(a), 100);
     });
   });
 
