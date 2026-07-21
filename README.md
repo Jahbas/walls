@@ -1,4 +1,4 @@
-# walls
+# highpapers
 
 drop wallpapers here. add their urls to `wallpapers.json`.
 
