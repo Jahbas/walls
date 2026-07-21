@@ -128,10 +128,14 @@
     border: none;
     color: var(--mute);
     cursor: pointer;
-    font-size: 13px;
-    line-height: 1;
     padding: 0;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    transition: color 0.12s ease, background 0.12s ease;
   }
 
   .pill button:hover { color: var(--text); }
@@ -644,8 +648,15 @@ function screenCat(w, h) {
 function pill(label, group, val) {
   const p = document.createElement('span');
   p.className = 'pill';
-  p.innerHTML = `${label} <button aria-label="Remove ${label}">&times;</button>`;
-  p.querySelector('button').addEventListener('click', () => {
+
+  const text = document.createTextNode(label);
+  p.appendChild(text);
+
+  const btn = document.createElement('button');
+  btn.setAttribute('aria-label', `Remove ${label}`);
+  btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
     if (group === 'res') state.res = state.res.filter(v => v !== val);
     if (group === 'screen') state.screen = state.screen.filter(v => v !== val);
     if (group === 'anime') {
@@ -654,6 +665,8 @@ function pill(label, group, val) {
     }
     update();
   });
+  p.appendChild(btn);
+
   return p;
 }
 
