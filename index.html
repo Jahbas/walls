@@ -853,6 +853,9 @@ async function init() {
 
   loading.style.display = 'none';
 
+  console.log('loaded', allWallpapers.length, 'wallpapers');
+  console.log('animes', [...new Set(allWallpapers.map(w => w.anime))]);
+
   state.allAnimes = [...new Set(allWallpapers.map(w => w.anime).filter(Boolean))].sort();
 
   const animeList = document.getElementById('animeList');
@@ -1068,7 +1071,7 @@ async function init() {
       empty.style.display = 'flex';
       emptyMsg.textContent = contradictoryFilters()
         ? 'no wallpapers match — try removing conflicting filters'
-        : 'no wallpapers match';
+        : `no wallpapers match (pool: ${pool.length}, search: "${state.search}", res: [${state.res}], screen: [${state.screen}], animes: [${state.animes}], folderMode: ${state.folderMode}, activeFolder: ${state.activeFolder || 'none'})`;
     }
 
     const total = pool.length;
