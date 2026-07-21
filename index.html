@@ -28,7 +28,11 @@
   body {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 48px 32px 96px;
+    padding:
+      max(48px, env(safe-area-inset-top, 0px))
+      max(32px, env(safe-area-inset-right, 0px))
+      max(96px, env(safe-area-inset-bottom, 0px))
+      max(32px, env(safe-area-inset-left, 0px));
   }
 
   header {
@@ -44,30 +48,6 @@
     letter-spacing: -0.01em;
     color: var(--text);
   }
-
-  .breadcrumb {
-    font-size: 13px;
-    color: var(--mute);
-    display: none;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .breadcrumb.show { display: flex; }
-
-  .breadcrumb button {
-    background: none;
-    border: none;
-    color: var(--mute);
-    cursor: pointer;
-    font-size: 13px;
-    font-family: inherit;
-    padding: 2px 0;
-  }
-
-  .breadcrumb button:hover { color: var(--text); }
-
-  .breadcrumb span { color: var(--text); }
 
   .search-row {
     display: flex;
@@ -509,8 +489,8 @@
 
   .lightbox .top-actions {
     position: absolute;
-    top: 24px;
-    right: 24px;
+    top: max(24px, env(safe-area-inset-top, 0px));
+    right: max(24px, env(safe-area-inset-right, 0px));
     display: flex;
     gap: 8px;
   }
@@ -657,11 +637,6 @@
 
 <header>
   <h1>highpapers</h1>
-  <div class="breadcrumb" id="breadcrumb">
-    <button id="breadcrumbBack">all</button>
-    <span>/</span>
-    <span id="breadcrumbCurrent"></span>
-  </div>
 </header>
 
 <div class="search-row">
@@ -921,16 +896,21 @@ async function init() {
 
   const filterBtn = document.getElementById('filterBtn');
   const filterPanel = document.getElementById('filterPanel');
-  filterBtn.addEventListener('click', () => filterPanel.classList.toggle('open'));
+  filterBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    filterPanel.classList.toggle('open');
+  });
+
+  document.addEventListener('click', e => {
+    if (!filterPanel.contains(e.target) && e.target !== filterBtn) {
+      filterPanel.classList.remove('open');
+    }
+  });
 
   document.getElementById('folderBtn').addEventListener('click', () => {
     state.folderMode = !state.folderMode;
     state.activeFolder = null;
-    update();
-  });
-
-  document.getElementById('breadcrumbBack').addEventListener('click', () => {
-    state.activeFolder = null;
+    localStorage.setItem('walls:folderMode', state.folderMode);
     update();
   });
 
@@ -958,8 +938,6 @@ async function init() {
   const folderNav = document.getElementById('folderNav');
   const folderBackBtn = document.getElementById('folderBack');
   const folderDownloadBtn = document.getElementById('folderDownload');
-  const breadcrumb = document.getElementById('breadcrumb');
-  const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
   const animeToggleEl = document.getElementById('animeToggle');
   const lb = document.getElementById('lightbox');
   const lbImg = lb.querySelector('img');
@@ -1009,10 +987,14 @@ async function init() {
   lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
 
   document.addEventListener('keydown', e => {
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') lbNavigate(-1);
-    if (e.key === 'ArrowRight') lbNavigate(1);
+    if (e.key === 'Escape') {
+      if (lb.classList.contains('open')) closeLightbox();
+      else if (filterPanel.classList.contains('open')) filterPanel.classList.remove('open');
+    }
+    if (lb.classList.contains('open')) {
+      if (e.key === 'ArrowLeft') lbNavigate(-1);
+      if (e.key === 'ArrowRight') lbNavigate(1);
+    }
   });
 
   folderBackBtn.addEventListener('click', () => {
@@ -1047,8 +1029,6 @@ async function init() {
     empty.style.display = 'none';
 
       if (state.folderMode && !state.activeFolder) {
-      breadcrumb.classList.remove('show');
-      breadcrumbCurrent.textContent = '';
       folderNav.classList.remove('show');
       state.animes = [];
       updateAnimeOptions();
@@ -1075,12 +1055,8 @@ async function init() {
     let pool = allWallpapers;
     if (state.folderMode && state.activeFolder) {
       pool = allWallpapers.filter(w => w.anime === state.activeFolder);
-      breadcrumb.classList.add('show');
-      breadcrumbCurrent.textContent = state.activeFolder;
       folderNav.classList.add('show');
     } else if (!state.folderMode) {
-      breadcrumb.classList.remove('show');
-      breadcrumbCurrent.textContent = '';
       folderNav.classList.remove('show');
     }
 
@@ -1262,6 +1238,11 @@ async function init() {
     update();
   });
 
+  if (!location.search.includes('view=') && !location.search.includes('folder=')) {
+    if (localStorage.getItem('walls:folderMode') === 'true') {
+      state.folderMode = true;
+    }
+  }
   loadURL();
   update();
 }
