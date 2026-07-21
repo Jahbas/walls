@@ -1,27 +1,2 @@
 [
-  {
-    "name": "sample wallpaper",
-    "url": "https://picsum.photos/id/1015/2560/1440",
-    "resolution": "2560x1440"
-  },
-  {
-    "name": "sample wallpaper",
-    "url": "https://picsum.photos/id/1018/3840/2160",
-    "resolution": "3840x2160"
-  },
-  {
-    "name": "sample wallpaper",
-    "url": "https://picsum.photos/id/1020/2560/1440",
-    "resolution": "2560x1440"
-  },
-  {
-    "name": "sample wallpaper",
-    "url": "https://picsum.photos/id/1035/3840/2160",
-    "resolution": "3840x2160"
-  },
-  {
-    "name": "sample wallpaper",
-    "url": "https://picsum.photos/id/1039/3440x1440",
-    "resolution": "3440x1440"
-  }
 ]
