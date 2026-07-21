@@ -573,7 +573,7 @@
       <div class="filter-label">Screen</div>
       <div class="filter-options" id="screenFilters">
         <button class="filter-option" data-val="3840x2160">3840x2160</button>
-        <button class="filter-option" data-val="1080x1920">1080x1920</button>
+        <button class="filter-option" data-val="1920x1080">1920x1080</button>
         <button class="filter-option" data-val="custom">other</button>
       </div>
     </div>
@@ -641,7 +641,7 @@ function resCat(w, h) {
 
 function screenCat(w, h) {
   const key = `${w}x${h}`;
-  if (key === '3840x2160' || key === '1080x1920') return key;
+  if (key === '3840x2160' || key === '1920x1080') return key;
   return 'custom';
 }
 
