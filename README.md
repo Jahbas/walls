@@ -1,39 +1,20 @@
 # highpapers
 
-drop wallpapers here. add their urls to `wallpapers.json`.
+curated wallpaper gallery — [jahbas.github.io/walls](https://jahbas.github.io/walls)
 
-## adding wallpapers
+## how releases work
 
-each entry in `wallpapers.json`:
+| release | purpose |
+|---------|---------|
+| `0.0.1` | base collection — all current wallpapers |
+| `0.0.2` | next time you add wallpapers, upload only the new ones here |
+| `0.0.3` | and so on |
 
-```json
-{
-  "name": "your-wallpaper-name",
-  "url": "https://path-to-your-image.jpg",
-  "resolution": "2560x1440"
-}
-```
+each wallpaper in `wallpapers.json` has its own URL pointing to the release it was uploaded to. this means you never re-upload a wallpaper that was already in a previous release. just add new files to the next release tag and append entries to `wallpapers.json`.
 
-### hosting with github releases (unlimited storage)
+### adding new wallpapers
 
-1. go to the repo's [Releases](https://github.com/Jahbas/walls/releases) page
-2. create a new release, attach your wallpaper files
-3. use the release asset url in `wallpapers.json`:
-   `https://github.com/Jahbas/walls/releases/download/v1.0/your-wallpaper.png`
-
-release assets don't count toward repo storage limits and support files up to 2gb each.
-
-### hosting in repo
-
-drop images into `/wallpapers/` and use relative paths:
-
-```json
-{ "name": "my wall", "url": "wallpapers/my-wall.png" }
-```
-
-repo limit is 1gb total.
-
-## editing
-
-edit `wallpapers.json` directly on github or clone the repo, add your changes, and push.
-the site updates automatically.
+1. drop images into `~/Downloads/highpapers/{anime-name}/` with format `{slug}-{nn}.{ext}`
+2. create a new release: `gh release create 0.0.2 --repo Jahbas/walls`
+3. upload only new files: `gh release upload 0.0.2 --repo Jahbas/walls `path/to/new/file.jpg`
+4. add entries to `wallpapers.json` using `https://github.com/Jahbas/walls/releases/download/0.0.2/new-file.jpg`
