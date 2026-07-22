@@ -1,203 +1,43 @@
 [
   {
-    "name": "Weathering with you 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-01.jpg",
+    "name": "Alya Sometimes Hides Her Feelings in Russian 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/alya-sometimes-hides-her-feelings-in-russian-01.png",
+    "resolution": "1920x1080",
+    "fileSize": 2071412,
+    "dominantColor": "srgb(67,76,124)",
+    "anime": "Alya Sometimes Hides Her Feelings in Russian"
+  },
+  {
+    "name": "Alya Sometimes Hides Her Feelings in Russian 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/alya-sometimes-hides-her-feelings-in-russian-02.png",
     "resolution": "3840x2160",
-    "fileSize": 343479,
-    "dominantColor": "srgb(10,113,218)",
-    "anime": "Weathering with you"
+    "fileSize": 3273677,
+    "dominantColor": "srgb(254,253,255)",
+    "anime": "Alya Sometimes Hides Her Feelings in Russian"
   },
   {
-    "name": "Weathering with you 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-02.jpg",
+    "name": "Berserk 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/berserk-01.png",
     "resolution": "1920x1080",
-    "fileSize": 258135,
-    "dominantColor": "srgb(85,112,131)",
-    "anime": "Weathering with you"
+    "fileSize": 897029,
+    "dominantColor": "srgba(204,186,184,1)",
+    "anime": "Berserk"
   },
   {
-    "name": "Weathering with you 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-03.jpg",
+    "name": "Berserk 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/berserk-02.jpg",
     "resolution": "1920x1080",
-    "fileSize": 331003,
-    "dominantColor": "srgb(100,153,185)",
-    "anime": "Weathering with you"
+    "fileSize": 360700,
+    "dominantColor": "srgb(0,0,0)",
+    "anime": "Berserk"
   },
   {
-    "name": "Weathering with you 4",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-04.jpg",
-    "resolution": "3821x2000",
-    "fileSize": 355267,
-    "dominantColor": "srgb(42,144,206)",
-    "anime": "Weathering with you"
-  },
-  {
-    "name": "Weathering with you 5",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-05.png",
+    "name": "Berserk 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/berserk-03.png",
     "resolution": "1920x1080",
-    "fileSize": 1278495,
-    "dominantColor": "srgb(169,166,155)",
-    "anime": "Weathering with you"
-  },
-  {
-    "name": "Weathering with you 6",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-06.jpg",
-    "resolution": "4093x2894",
-    "fileSize": 447448,
-    "dominantColor": "srgb(3,47,134)",
-    "anime": "Weathering with you"
-  },
-  {
-    "name": "Fully Blossoms When Drunk 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/fully-blossoms-when-drunk-01.jpg",
-    "resolution": "3840x2160",
-    "fileSize": 2619483,
-    "dominantColor": "srgb(115,172,191)",
-    "anime": "Fully Blossoms When Drunk"
-  },
-  {
-    "name": "Your name 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-01.jpg",
-    "resolution": "7015x3879",
-    "fileSize": 973971,
-    "dominantColor": "srgb(5,7,22)",
-    "anime": "Your name"
-  },
-  {
-    "name": "Your name 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-02.png",
-    "resolution": "1920x1080",
-    "fileSize": 649110,
-    "dominantColor": "srgb(63,84,149)",
-    "anime": "Your name"
-  },
-  {
-    "name": "Your name 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-03.jpg",
-    "resolution": "8858x4962",
-    "fileSize": 2187185,
-    "dominantColor": "srgb(105,126,179)",
-    "anime": "Your name"
-  },
-  {
-    "name": "Your name 4",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-04.png",
-    "resolution": "1920x1080",
-    "fileSize": 1138019,
-    "dominantColor": "srgb(109,137,112)",
-    "anime": "Your name"
-  },
-  {
-    "name": "Your name 5",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-05.png",
-    "resolution": "3840x2160",
-    "fileSize": 1317255,
-    "dominantColor": "srgb(35,41,90)",
-    "anime": "Your name"
-  },
-  {
-    "name": "Your name 6",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-06.jpg",
-    "resolution": "3840x2160",
-    "fileSize": 443271,
-    "dominantColor": "srgb(3,6,15)",
-    "anime": "Your name"
-  },
-  {
-    "name": "Horimiya 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-01.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 166637,
-    "dominantColor": "srgb(249,253,255)",
-    "anime": "Horimiya"
-  },
-  {
-    "name": "Horimiya 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-02.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 181945,
-    "dominantColor": "srgb(255,255,255)",
-    "anime": "Horimiya"
-  },
-  {
-    "name": "Horimiya 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-03.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 174314,
-    "dominantColor": "srgb(243,255,253)",
-    "anime": "Horimiya"
-  },
-  {
-    "name": "Horimiya 4",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-04.png",
-    "resolution": "1920x1080",
-    "fileSize": 709748,
-    "dominantColor": "srgb(251,249,247)",
-    "anime": "Horimiya"
-  },
-  {
-    "name": "Horimiya 5",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-05.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 172573,
-    "dominantColor": "srgb(228,230,225)",
-    "anime": "Horimiya"
-  },
-  {
-    "name": "Horimiya 6",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-06.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 153344,
-    "dominantColor": "srgb(2,119,199)",
-    "anime": "Horimiya"
-  },
-  {
-    "name": "Horimiya 7",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-07.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 249013,
-    "dominantColor": "srgb(218,218,230)",
-    "anime": "Horimiya"
-  },
-  {
-    "name": "Vinland Saga 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-01.png",
-    "resolution": "3840x2160",
-    "fileSize": 7325896,
-    "dominantColor": "srgba(219,201,159,1)",
-    "anime": "Vinland Saga"
-  },
-  {
-    "name": "Vinland Saga 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-02.jpeg",
-    "resolution": "3370x2099",
-    "fileSize": 673062,
-    "dominantColor": "srgb(255,255,255)",
-    "anime": "Vinland Saga"
-  },
-  {
-    "name": "Vinland Saga 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-03.png",
-    "resolution": "6912x3456",
-    "fileSize": 6492234,
-    "dominantColor": "srgba(100,102,101,1)",
-    "anime": "Vinland Saga"
-  },
-  {
-    "name": "Vinland Saga 4",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-04.jpg",
-    "resolution": "3840x2160",
-    "fileSize": 550984,
-    "dominantColor": "srgb(244,247,252)",
-    "anime": "Vinland Saga"
-  },
-  {
-    "name": "Vinland Saga 5",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-05.jpg",
-    "resolution": "2560x1440",
-    "fileSize": 351055,
-    "dominantColor": "srgb(16,27,29)",
-    "anime": "Vinland Saga"
+    "fileSize": 3317196,
+    "dominantColor": "srgba(2,4,4,1)",
+    "anime": "Berserk"
   },
   {
     "name": "Chainsaw Man 1",
@@ -205,6 +45,62 @@
     "resolution": "7680x4320",
     "fileSize": 39532206,
     "dominantColor": "srgba(30,30,32,1)",
+    "anime": "Chainsaw Man"
+  },
+  {
+    "name": "Chainsaw Man 10",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-10.jpg",
+    "resolution": "3840x2159",
+    "fileSize": 375243,
+    "dominantColor": "srgb(237,7,72)",
+    "anime": "Chainsaw Man"
+  },
+  {
+    "name": "Chainsaw Man 11",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-11.jpg",
+    "resolution": "3840x1608",
+    "fileSize": 904690,
+    "dominantColor": "srgb(163,157,157)",
+    "anime": "Chainsaw Man"
+  },
+  {
+    "name": "Chainsaw Man 12",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-12.jpg",
+    "resolution": "3840x2160",
+    "fileSize": 1919022,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man"
+  },
+  {
+    "name": "Chainsaw Man 13",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-13.png",
+    "resolution": "3840x2160",
+    "fileSize": 1770372,
+    "dominantColor": "srgba(205,50,60,1)",
+    "anime": "Chainsaw Man"
+  },
+  {
+    "name": "Chainsaw Man 14",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-14.png",
+    "resolution": "3840x2160",
+    "fileSize": 3032633,
+    "dominantColor": "srgba(144,207,188,1)",
+    "anime": "Chainsaw Man"
+  },
+  {
+    "name": "Chainsaw Man 15",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-15.png",
+    "resolution": "1920x1080",
+    "fileSize": 604277,
+    "dominantColor": "srgba(255,64,120,1)",
+    "anime": "Chainsaw Man"
+  },
+  {
+    "name": "Chainsaw Man 16",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/chainsaw-man-16.png",
+    "resolution": "7680x4320",
+    "fileSize": 11189586,
+    "dominantColor": "srgb(34,17,0)",
     "anime": "Chainsaw Man"
   },
   {
@@ -272,404 +168,52 @@
     "anime": "Chainsaw Man"
   },
   {
-    "name": "Chainsaw Man 10",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-10.jpg",
-    "resolution": "3840x2159",
-    "fileSize": 375243,
-    "dominantColor": "srgb(237,7,72)",
-    "anime": "Chainsaw Man"
-  },
-  {
-    "name": "Chainsaw Man 11",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-11.jpg",
-    "resolution": "3840x1608",
-    "fileSize": 904690,
-    "dominantColor": "srgb(163,157,157)",
-    "anime": "Chainsaw Man"
-  },
-  {
-    "name": "Chainsaw Man 12",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-12.jpg",
-    "resolution": "3840x2160",
-    "fileSize": 1919022,
-    "dominantColor": "srgb(255,255,255)",
-    "anime": "Chainsaw Man"
-  },
-  {
-    "name": "Chainsaw Man 13",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-13.png",
-    "resolution": "3840x2160",
-    "fileSize": 1770372,
-    "dominantColor": "srgba(205,50,60,1)",
-    "anime": "Chainsaw Man"
-  },
-  {
-    "name": "Chainsaw Man 14",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-14.png",
-    "resolution": "3840x2160",
-    "fileSize": 3032633,
-    "dominantColor": "srgba(144,207,188,1)",
-    "anime": "Chainsaw Man"
-  },
-  {
-    "name": "Chainsaw Man 15",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/chainsaw-man-15.png",
+    "name": "Charlotte 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/charlotte-01.png",
     "resolution": "1920x1080",
-    "fileSize": 604277,
-    "dominantColor": "srgba(255,64,120,1)",
-    "anime": "Chainsaw Man"
-  },
-  {
-    "name": "Tokyo Ghoul 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-01.png",
-    "resolution": "1920x1080",
-    "fileSize": 1272647,
-    "dominantColor": "srgb(240,240,240)",
-    "anime": "Tokyo Ghoul"
-  },
-  {
-    "name": "Tokyo Ghoul 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-02.jpg",
-    "resolution": "1366x964",
-    "fileSize": 493154,
-    "dominantColor": "srgb(238,30,30)",
-    "anime": "Tokyo Ghoul"
-  },
-  {
-    "name": "Tokyo Ghoul 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-03.png",
-    "resolution": "1920x1080",
-    "fileSize": 1602747,
-    "dominantColor": "srgba(209,207,202,1)",
-    "anime": "Tokyo Ghoul"
-  },
-  {
-    "name": "Tokyo Ghoul 4",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-04.png",
-    "resolution": "1920x1080",
-    "fileSize": 1022469,
-    "dominantColor": "srgb(0,0,0)",
-    "anime": "Tokyo Ghoul"
-  },
-  {
-    "name": "Tokyo Ghoul 5",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-05.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 388205,
-    "dominantColor": "srgb(0,42,56)",
-    "anime": "Tokyo Ghoul"
-  },
-  {
-    "name": "Tokyo Ghoul 6",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-06.png",
-    "resolution": "1920x1080",
-    "fileSize": 443635,
-    "dominantColor": "srgb(212,158,199)",
-    "anime": "Tokyo Ghoul"
-  },
-  {
-    "name": "Tokyo Ghoul 7",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-07.png",
-    "resolution": "7680x4320",
-    "fileSize": 16965264,
+    "fileSize": 2254207,
     "dominantColor": "srgba(255,255,255,1)",
-    "anime": "Tokyo Ghoul"
+    "anime": "Charlotte"
   },
   {
-    "name": "Orange 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/orange-01.png",
-    "resolution": "1920x1080",
-    "fileSize": 988769,
-    "dominantColor": "srgb(125,162,120)",
-    "anime": "Orange"
-  },
-  {
-    "name": "Orange 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/orange-02.png",
-    "resolution": "2560x1440",
-    "fileSize": 1064136,
-    "dominantColor": "srgb(254,255,252)",
-    "anime": "Orange"
-  },
-  {
-    "name": "My Teen Romantic Comedy 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/my-teen-romantic-comedy-01.png",
-    "resolution": "1920x1080",
-    "fileSize": 791363,
-    "dominantColor": "srgb(161,167,194)",
-    "anime": "My Teen Romantic Comedy"
-  },
-  {
-    "name": "My Teen Romantic Comedy 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/my-teen-romantic-comedy-02.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 113541,
-    "dominantColor": "srgb(65,81,104)",
-    "anime": "My Teen Romantic Comedy"
-  },
-  {
-    "name": "My Teen Romantic Comedy 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/my-teen-romantic-comedy-03.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 235827,
-    "dominantColor": "srgb(255,255,255)",
-    "anime": "My Teen Romantic Comedy"
-  },
-  {
-    "name": "Neon Genesis Evangelion 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/neon-genesis-evangelion-01.jpg",
+    "name": "Charlotte 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/charlotte-02.jpg",
     "resolution": "3840x2160",
-    "fileSize": 362571,
-    "dominantColor": "srgb(27,25,26)",
-    "anime": "Neon Genesis Evangelion"
+    "fileSize": 478109,
+    "dominantColor": "srgb(142,159,213)",
+    "anime": "Charlotte"
   },
   {
-    "name": "Neon Genesis Evangelion 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/neon-genesis-evangelion-02.png",
-    "resolution": "2560x1440",
-    "fileSize": 1272489,
-    "dominantColor": "srgb(54,57,73)",
-    "anime": "Neon Genesis Evangelion"
-  },
-  {
-    "name": "Neon Genesis Evangelion 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/neon-genesis-evangelion-03.png",
-    "resolution": "2560x1440",
-    "fileSize": 479950,
-    "dominantColor": "srgb(255,255,255)",
-    "anime": "Neon Genesis Evangelion"
-  },
-  {
-    "name": "Neon Genesis Evangelion 4",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/neon-genesis-evangelion-04.png",
+    "name": "Code Geass: Lelouch of the Rebellion 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/code-geass-lelouch-of-the-rebellion-01.jpg",
     "resolution": "1920x1080",
-    "fileSize": 1019355,
-    "dominantColor": "srgb(30,13,19)",
-    "anime": "Neon Genesis Evangelion"
+    "fileSize": 226467,
+    "dominantColor": "srgb(128,162,76)",
+    "anime": "Code Geass: Lelouch of the Rebellion"
   },
   {
-    "name": "I want to eat your pancreas 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/i-want-to-eat-your-pancreas-01.jpg",
+    "name": "Code Geass: Lelouch of the Rebellion 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/code-geass-lelouch-of-the-rebellion-02.jpg",
     "resolution": "1920x1080",
-    "fileSize": 169736,
-    "dominantColor": "srgb(171,129,149)",
-    "anime": "I want to eat your pancreas"
+    "fileSize": 574340,
+    "dominantColor": "srgb(19,1,1)",
+    "anime": "Code Geass: Lelouch of the Rebellion"
   },
   {
-    "name": "I want to eat your pancreas 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/i-want-to-eat-your-pancreas-02.jpg",
+    "name": "Code Geass: Lelouch of the Rebellion 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/code-geass-lelouch-of-the-rebellion-03.jpg",
     "resolution": "1920x1080",
-    "fileSize": 208593,
-    "dominantColor": "srgb(106,180,215)",
-    "anime": "I want to eat your pancreas"
+    "fileSize": 279166,
+    "dominantColor": "srgb(40,26,39)",
+    "anime": "Code Geass: Lelouch of the Rebellion"
   },
   {
-    "name": "I want to eat your pancreas 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/i-want-to-eat-your-pancreas-03.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 62907,
-    "dominantColor": "srgb(226,228,215)",
-    "anime": "I want to eat your pancreas"
-  },
-  {
-    "name": "I want to eat your pancreas 4",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/i-want-to-eat-your-pancreas-04.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 100787,
-    "dominantColor": "srgb(89,119,145)",
-    "anime": "I want to eat your pancreas"
-  },
-  {
-    "name": "K-ON! 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-01.jpg",
-    "resolution": "1920x1200",
-    "fileSize": 1114964,
-    "dominantColor": "srgb(127,238,56)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-02.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 147493,
-    "dominantColor": "srgb(255,255,255)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-03.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 460219,
-    "dominantColor": "srgb(252,249,232)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 4",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-04.png",
-    "resolution": "1920x1080",
-    "fileSize": 1528006,
-    "dominantColor": "srgba(134,139,202,0.929412)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 5",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-05.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 304230,
+    "name": "Code Geass: Lelouch of the Rebellion 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/code-geass-lelouch-of-the-rebellion-04.jpg",
+    "resolution": "4501x2813",
+    "fileSize": 850984,
     "dominantColor": "srgb(0,0,0)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 6",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-06.jpg",
-    "resolution": "1920x1200",
-    "fileSize": 955079,
-    "dominantColor": "srgb(255,255,255)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 7",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-07.jpg",
-    "resolution": "5927x4075",
-    "fileSize": 4839296,
-    "dominantColor": "srgb(60,65,58)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 8",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-08.jpg",
-    "resolution": "6108x4090",
-    "fileSize": 4124265,
-    "dominantColor": "srgb(53,74,165)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 9",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-09.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 1404436,
-    "dominantColor": "srgb(253,173,172)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 10",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-10.png",
-    "resolution": "1920x1080",
-    "fileSize": 1821860,
-    "dominantColor": "srgba(3,2,2,1)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "K-ON! 11",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-11.png",
-    "resolution": "1920x1080",
-    "fileSize": 2612802,
-    "dominantColor": "srgba(5,4,3,1)",
-    "anime": "K-ON!"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 1",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-01.png",
-    "resolution": "1920x1290",
-    "fileSize": 2626722,
-    "dominantColor": "srgb(74,107,178)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 2",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-02.jpeg",
-    "resolution": "7680x4320",
-    "fileSize": 1956235,
-    "dominantColor": "srgb(54,88,125)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 3",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-03.jpeg",
-    "resolution": "3840x2160",
-    "fileSize": 1194199,
-    "dominantColor": "srgb(49,49,51)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 4",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-04.png",
-    "resolution": "1920x1080",
-    "fileSize": 887191,
-    "dominantColor": "srgba(23,30,52,1)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 5",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-05.jpeg",
-    "resolution": "3840x2160",
-    "fileSize": 2082486,
-    "dominantColor": "srgb(98,176,188)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 6",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-06.jpeg",
-    "resolution": "3840x2160",
-    "fileSize": 3000845,
-    "dominantColor": "srgb(227,227,163)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 7",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-07.jpeg",
-    "resolution": "8418x4161",
-    "fileSize": 11108150,
-    "dominantColor": "srgb(218,211,183)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 8",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-08.jpeg",
-    "resolution": "2698x2014",
-    "fileSize": 681616,
-    "dominantColor": "srgb(19,15,16)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 9",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-09.png",
-    "resolution": "3840x2160",
-    "fileSize": 1714441,
-    "dominantColor": "srgba(22,30,41,1)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 10",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-10.png",
-    "resolution": "1920x1080",
-    "fileSize": 2655267,
-    "dominantColor": "srgb(182,143,97)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 11",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-11.jpg",
-    "resolution": "1920x1080",
-    "fileSize": 462877,
-    "dominantColor": "srgb(252,252,252)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 12",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-12.jpg",
-    "resolution": "3840x2160",
-    "fileSize": 794924,
-    "dominantColor": "srgb(249,225,179)",
-    "anime": "Frieren Beyond Journeys end"
-  },
-  {
-    "name": "Frieren Beyond Journeys end 13",
-    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-13.jpg",
-    "resolution": "3840x2160",
-    "fileSize": 11803120,
-    "dominantColor": "srgb(21,17,5)",
-    "anime": "Frieren Beyond Journeys end"
+    "anime": "Code Geass: Lelouch of the Rebellion"
   },
   {
     "name": "DARLING in the FRANXX 1",
@@ -742,5 +286,925 @@
     "fileSize": 1791929,
     "dominantColor": "srgb(100,100,100)",
     "anime": "DARLING in the FRANXX"
+  },
+  {
+    "name": "Date A Live 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/date-a-live-01.png",
+    "resolution": "3840x2160",
+    "fileSize": 4244374,
+    "dominantColor": "srgba(232,68,50,1)",
+    "anime": "Date A Live"
+  },
+  {
+    "name": "Date A Live 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/date-a-live-02.png",
+    "resolution": "2880x1800",
+    "fileSize": 2653629,
+    "dominantColor": "srgba(112,72,176,1)",
+    "anime": "Date A Live"
+  },
+  {
+    "name": "Date A Live 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/date-a-live-03.png",
+    "resolution": "1920x1080",
+    "fileSize": 2067814,
+    "dominantColor": "srgb(95,65,62)",
+    "anime": "Date A Live"
+  },
+  {
+    "name": "Date A Live 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/date-a-live-04.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 221759,
+    "dominantColor": "srgb(0,0,0)",
+    "anime": "Date A Live"
+  },
+  {
+    "name": "Date A Live 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/date-a-live-05.png",
+    "resolution": "3840x2160",
+    "fileSize": 5299907,
+    "dominantColor": "srgba(84,137,132,0.952941)",
+    "anime": "Date A Live"
+  },
+  {
+    "name": "Death Note 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-01.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 307121,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Death Note 10",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-10.png",
+    "resolution": "2560x1440",
+    "fileSize": 5166556,
+    "dominantColor": "srgba(0,0,0,1)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Death Note 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-02.png",
+    "resolution": "1920x1080",
+    "fileSize": 2485141,
+    "dominantColor": "srgba(5,5,6,1)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Death Note 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-03.png",
+    "resolution": "3840x2160",
+    "fileSize": 1150592,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Death Note 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-04.jpg",
+    "resolution": "2560x1440",
+    "fileSize": 1812384,
+    "dominantColor": "srgb(92,92,92)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Death Note 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-05.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 358827,
+    "dominantColor": "srgb(254,254,254)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Death Note 6",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-06.jpg",
+    "resolution": "2560x1600",
+    "fileSize": 985801,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Death Note 7",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-07.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 308059,
+    "dominantColor": "srgb(247,245,246)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Death Note 8",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-08.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 1330531,
+    "dominantColor": "srgb(155,155,155)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Death Note 9",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/death-note-09.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 341972,
+    "dominantColor": "srgb(180,150,139)",
+    "anime": "Death Note"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-01.png",
+    "resolution": "1920x1290",
+    "fileSize": 2626722,
+    "dominantColor": "srgb(74,107,178)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 10",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-10.png",
+    "resolution": "1920x1080",
+    "fileSize": 2655267,
+    "dominantColor": "srgb(182,143,97)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 11",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-11.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 462877,
+    "dominantColor": "srgb(252,252,252)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 12",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-12.jpg",
+    "resolution": "3840x2160",
+    "fileSize": 794924,
+    "dominantColor": "srgb(249,225,179)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 13",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-13.jpg",
+    "resolution": "3840x2160",
+    "fileSize": 11803120,
+    "dominantColor": "srgb(21,17,5)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 14",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/frieren-beyond-journeys-end-14.jpg",
+    "resolution": "7680x4320",
+    "fileSize": 5469240,
+    "dominantColor": "srgb(195,150,121)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 15",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/frieren-beyond-journeys-end-15.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 203862,
+    "dominantColor": "srgb(185,197,209)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 16",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/frieren-beyond-journeys-end-16.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 432892,
+    "dominantColor": "srgb(146,210,219)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 17",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/frieren-beyond-journeys-end-17.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 184591,
+    "dominantColor": "srgb(16,31,60)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-02.jpeg",
+    "resolution": "7680x4320",
+    "fileSize": 1956235,
+    "dominantColor": "srgb(54,88,125)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-03.jpeg",
+    "resolution": "3840x2160",
+    "fileSize": 1194199,
+    "dominantColor": "srgb(49,49,51)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-04.png",
+    "resolution": "1920x1080",
+    "fileSize": 887191,
+    "dominantColor": "srgba(23,30,52,1)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-05.jpeg",
+    "resolution": "3840x2160",
+    "fileSize": 2082486,
+    "dominantColor": "srgb(98,176,188)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 6",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-06.jpeg",
+    "resolution": "3840x2160",
+    "fileSize": 3000845,
+    "dominantColor": "srgb(227,227,163)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 7",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-07.jpeg",
+    "resolution": "8418x4161",
+    "fileSize": 11108150,
+    "dominantColor": "srgb(218,211,183)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 8",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-08.jpeg",
+    "resolution": "2698x2014",
+    "fileSize": 681616,
+    "dominantColor": "srgb(19,15,16)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Frieren Beyond Journeys end 9",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/frieren-beyond-journeys-end-09.png",
+    "resolution": "3840x2160",
+    "fileSize": 1714441,
+    "dominantColor": "srgba(22,30,41,1)",
+    "anime": "Frieren Beyond Journeys end"
+  },
+  {
+    "name": "Fully Blossoms When Drunk 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/fully-blossoms-when-drunk-01.jpg",
+    "resolution": "3840x2160",
+    "fileSize": 2619483,
+    "dominantColor": "srgb(115,172,191)",
+    "anime": "Fully Blossoms When Drunk"
+  },
+  {
+    "name": "Horimiya 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-01.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 166637,
+    "dominantColor": "srgb(249,253,255)",
+    "anime": "Horimiya"
+  },
+  {
+    "name": "Horimiya 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-02.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 181945,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Horimiya"
+  },
+  {
+    "name": "Horimiya 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-03.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 174314,
+    "dominantColor": "srgb(243,255,253)",
+    "anime": "Horimiya"
+  },
+  {
+    "name": "Horimiya 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-04.png",
+    "resolution": "1920x1080",
+    "fileSize": 709748,
+    "dominantColor": "srgb(251,249,247)",
+    "anime": "Horimiya"
+  },
+  {
+    "name": "Horimiya 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-05.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 172573,
+    "dominantColor": "srgb(228,230,225)",
+    "anime": "Horimiya"
+  },
+  {
+    "name": "Horimiya 6",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-06.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 153344,
+    "dominantColor": "srgb(2,119,199)",
+    "anime": "Horimiya"
+  },
+  {
+    "name": "Horimiya 7",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/horimiya-07.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 249013,
+    "dominantColor": "srgb(218,218,230)",
+    "anime": "Horimiya"
+  },
+  {
+    "name": "Hyouka 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/hyouka-01.png",
+    "resolution": "1920x1080",
+    "fileSize": 1885588,
+    "dominantColor": "srgba(27,22,20,1)",
+    "anime": "Hyouka"
+  },
+  {
+    "name": "Hyouka 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/hyouka-02.jpg",
+    "resolution": "3840x2400",
+    "fileSize": 1305718,
+    "dominantColor": "srgb(118,178,64)",
+    "anime": "Hyouka"
+  },
+  {
+    "name": "Hyouka 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/hyouka-03.jpg",
+    "resolution": "2600x1600",
+    "fileSize": 1378576,
+    "dominantColor": "srgb(35,32,25)",
+    "anime": "Hyouka"
+  },
+  {
+    "name": "Hyouka 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/hyouka-04.png",
+    "resolution": "1920x1080",
+    "fileSize": 1673492,
+    "dominantColor": "srgba(101,80,87,1)",
+    "anime": "Hyouka"
+  },
+  {
+    "name": "I want to eat your pancreas 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/i-want-to-eat-your-pancreas-01.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 169736,
+    "dominantColor": "srgb(171,129,149)",
+    "anime": "I want to eat your pancreas"
+  },
+  {
+    "name": "I want to eat your pancreas 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/i-want-to-eat-your-pancreas-02.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 208593,
+    "dominantColor": "srgb(106,180,215)",
+    "anime": "I want to eat your pancreas"
+  },
+  {
+    "name": "I want to eat your pancreas 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/i-want-to-eat-your-pancreas-03.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 62907,
+    "dominantColor": "srgb(226,228,215)",
+    "anime": "I want to eat your pancreas"
+  },
+  {
+    "name": "I want to eat your pancreas 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/i-want-to-eat-your-pancreas-04.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 100787,
+    "dominantColor": "srgb(89,119,145)",
+    "anime": "I want to eat your pancreas"
+  },
+  {
+    "name": "K-ON! 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-01.jpg",
+    "resolution": "1920x1200",
+    "fileSize": 1114964,
+    "dominantColor": "srgb(127,238,56)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 10",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-10.png",
+    "resolution": "1920x1080",
+    "fileSize": 1821860,
+    "dominantColor": "srgba(3,2,2,1)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 11",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-11.png",
+    "resolution": "1920x1080",
+    "fileSize": 2612802,
+    "dominantColor": "srgba(5,4,3,1)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-02.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 147493,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-03.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 460219,
+    "dominantColor": "srgb(252,249,232)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-04.png",
+    "resolution": "1920x1080",
+    "fileSize": 1528006,
+    "dominantColor": "srgba(134,139,202,0.929412)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-05.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 304230,
+    "dominantColor": "srgb(0,0,0)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 6",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-06.jpg",
+    "resolution": "1920x1200",
+    "fileSize": 955079,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 7",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-07.jpg",
+    "resolution": "5927x4075",
+    "fileSize": 4839296,
+    "dominantColor": "srgb(60,65,58)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 8",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-08.jpg",
+    "resolution": "6108x4090",
+    "fileSize": 4124265,
+    "dominantColor": "srgb(53,74,165)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "K-ON! 9",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/k-on-09.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 1404436,
+    "dominantColor": "srgb(253,173,172)",
+    "anime": "K-ON!"
+  },
+  {
+    "name": "Love, Chunibyo and other delusions 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/love-chunibyo-and-other-delusions-01.jpg",
+    "resolution": "2200x1238",
+    "fileSize": 344278,
+    "dominantColor": "srgb(181,173,220)",
+    "anime": "Love, Chunibyo and other delusions"
+  },
+  {
+    "name": "Love, Chunibyo and other delusions 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/love-chunibyo-and-other-delusions-02.png",
+    "resolution": "1920x1200",
+    "fileSize": 561247,
+    "dominantColor": "srgba(255,255,255,1)",
+    "anime": "Love, Chunibyo and other delusions"
+  },
+  {
+    "name": "Love, Chunibyo and other delusions 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/love-chunibyo-and-other-delusions-03.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 312560,
+    "dominantColor": "srgb(31,68,86)",
+    "anime": "Love, Chunibyo and other delusions"
+  },
+  {
+    "name": "Love, Chunibyo and other delusions 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/love-chunibyo-and-other-delusions-04.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 242666,
+    "dominantColor": "srgb(1,1,1)",
+    "anime": "Love, Chunibyo and other delusions"
+  },
+  {
+    "name": "My Teen Romantic Comedy 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/my-teen-romantic-comedy-01.png",
+    "resolution": "1920x1080",
+    "fileSize": 791363,
+    "dominantColor": "srgb(161,167,194)",
+    "anime": "My Teen Romantic Comedy"
+  },
+  {
+    "name": "My Teen Romantic Comedy 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/my-teen-romantic-comedy-02.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 113541,
+    "dominantColor": "srgb(65,81,104)",
+    "anime": "My Teen Romantic Comedy"
+  },
+  {
+    "name": "My Teen Romantic Comedy 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/my-teen-romantic-comedy-03.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 235827,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "My Teen Romantic Comedy"
+  },
+  {
+    "name": "Neon Genesis Evangelion 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/neon-genesis-evangelion-01.jpg",
+    "resolution": "3840x2160",
+    "fileSize": 362571,
+    "dominantColor": "srgb(27,25,26)",
+    "anime": "Neon Genesis Evangelion"
+  },
+  {
+    "name": "Neon Genesis Evangelion 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/neon-genesis-evangelion-02.png",
+    "resolution": "2560x1440",
+    "fileSize": 1272489,
+    "dominantColor": "srgb(54,57,73)",
+    "anime": "Neon Genesis Evangelion"
+  },
+  {
+    "name": "Neon Genesis Evangelion 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/neon-genesis-evangelion-03.png",
+    "resolution": "2560x1440",
+    "fileSize": 479950,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Neon Genesis Evangelion"
+  },
+  {
+    "name": "Neon Genesis Evangelion 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/neon-genesis-evangelion-04.png",
+    "resolution": "1920x1080",
+    "fileSize": 1019355,
+    "dominantColor": "srgb(30,13,19)",
+    "anime": "Neon Genesis Evangelion"
+  },
+  {
+    "name": "Orange 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/orange-01.png",
+    "resolution": "1920x1080",
+    "fileSize": 988769,
+    "dominantColor": "srgb(125,162,120)",
+    "anime": "Orange"
+  },
+  {
+    "name": "Orange 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/orange-02.png",
+    "resolution": "2560x1440",
+    "fileSize": 1064136,
+    "dominantColor": "srgb(254,255,252)",
+    "anime": "Orange"
+  },
+  {
+    "name": "The Quintessential Quintuplets 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-01.png",
+    "resolution": "1920x1080",
+    "fileSize": 1574207,
+    "dominantColor": "srgba(255,255,255,1)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Quintessential Quintuplets 10",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-10.jpg",
+    "resolution": "2718x1699",
+    "fileSize": 381866,
+    "dominantColor": "srgb(230,216,205)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Quintessential Quintuplets 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-02.png",
+    "resolution": "1920x1080",
+    "fileSize": 3092185,
+    "dominantColor": "srgb(247,189,193)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Quintessential Quintuplets 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-03.png",
+    "resolution": "1920x1080",
+    "fileSize": 611076,
+    "dominantColor": "srgb(81,48,46)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Quintessential Quintuplets 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-04.jpg",
+    "resolution": "7680x3240",
+    "fileSize": 6237755,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Quintessential Quintuplets 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-05.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 2912451,
+    "dominantColor": "srgb(2,46,10)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Quintessential Quintuplets 6",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-06.png",
+    "resolution": "1920x1080",
+    "fileSize": 2884795,
+    "dominantColor": "srgb(156,190,213)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Quintessential Quintuplets 7",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-07.jpg",
+    "resolution": "5184x2916",
+    "fileSize": 12761186,
+    "dominantColor": "srgb(129,170,252)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Quintessential Quintuplets 8",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-08.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 63920,
+    "dominantColor": "srgb(141,60,57)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Quintessential Quintuplets 9",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-quintessential-quintuplets-09.jpg",
+    "resolution": "3833x1700",
+    "fileSize": 4611372,
+    "dominantColor": "srgb(254,254,254)",
+    "anime": "The Quintessential Quintuplets"
+  },
+  {
+    "name": "The Tunnel to summer 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-tunnel-to-summer-01.jpg",
+    "resolution": "3506x2160",
+    "fileSize": 686255,
+    "dominantColor": "srgb(58,90,137)",
+    "anime": "The Tunnel to summer"
+  },
+  {
+    "name": "The Tunnel to summer 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-tunnel-to-summer-02.jpg",
+    "resolution": "3506x2160",
+    "fileSize": 605774,
+    "dominantColor": "srgb(168,233,253)",
+    "anime": "The Tunnel to summer"
+  },
+  {
+    "name": "The Tunnel to summer 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/the-tunnel-to-summer-03.png",
+    "resolution": "2856x1606",
+    "fileSize": 5093600,
+    "dominantColor": "srgba(37,30,31,1)",
+    "anime": "The Tunnel to summer"
+  },
+  {
+    "name": "Tokyo Ghoul 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-01.png",
+    "resolution": "1920x1080",
+    "fileSize": 1272647,
+    "dominantColor": "srgb(240,240,240)",
+    "anime": "Tokyo Ghoul"
+  },
+  {
+    "name": "Tokyo Ghoul 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-02.jpg",
+    "resolution": "1366x964",
+    "fileSize": 493154,
+    "dominantColor": "srgb(238,30,30)",
+    "anime": "Tokyo Ghoul"
+  },
+  {
+    "name": "Tokyo Ghoul 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-03.png",
+    "resolution": "1920x1080",
+    "fileSize": 1602747,
+    "dominantColor": "srgba(209,207,202,1)",
+    "anime": "Tokyo Ghoul"
+  },
+  {
+    "name": "Tokyo Ghoul 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-04.png",
+    "resolution": "1920x1080",
+    "fileSize": 1022469,
+    "dominantColor": "srgb(0,0,0)",
+    "anime": "Tokyo Ghoul"
+  },
+  {
+    "name": "Tokyo Ghoul 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-05.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 388205,
+    "dominantColor": "srgb(0,42,56)",
+    "anime": "Tokyo Ghoul"
+  },
+  {
+    "name": "Tokyo Ghoul 6",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-06.png",
+    "resolution": "1920x1080",
+    "fileSize": 443635,
+    "dominantColor": "srgb(212,158,199)",
+    "anime": "Tokyo Ghoul"
+  },
+  {
+    "name": "Tokyo Ghoul 7",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/tokyo-ghoul-07.png",
+    "resolution": "7680x4320",
+    "fileSize": 16965264,
+    "dominantColor": "srgba(255,255,255,1)",
+    "anime": "Tokyo Ghoul"
+  },
+  {
+    "name": "Vinland Saga 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-01.png",
+    "resolution": "3840x2160",
+    "fileSize": 7325896,
+    "dominantColor": "srgba(219,201,159,1)",
+    "anime": "Vinland Saga"
+  },
+  {
+    "name": "Vinland Saga 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-02.jpeg",
+    "resolution": "3370x2099",
+    "fileSize": 673062,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Vinland Saga"
+  },
+  {
+    "name": "Vinland Saga 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-03.png",
+    "resolution": "6912x3456",
+    "fileSize": 6492234,
+    "dominantColor": "srgba(100,102,101,1)",
+    "anime": "Vinland Saga"
+  },
+  {
+    "name": "Vinland Saga 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-04.jpg",
+    "resolution": "3840x2160",
+    "fileSize": 550984,
+    "dominantColor": "srgb(244,247,252)",
+    "anime": "Vinland Saga"
+  },
+  {
+    "name": "Vinland Saga 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/vinland-saga-05.jpg",
+    "resolution": "2560x1440",
+    "fileSize": 351055,
+    "dominantColor": "srgb(16,27,29)",
+    "anime": "Vinland Saga"
+  },
+  {
+    "name": "Violet Evergarden 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/violet-evergarden-01.png",
+    "resolution": "1920x1080",
+    "fileSize": 3718382,
+    "dominantColor": "srgba(190,226,228,1)",
+    "anime": "Violet Evergarden"
+  },
+  {
+    "name": "Violet Evergarden 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/violet-evergarden-02.png",
+    "resolution": "3840x2160",
+    "fileSize": 1022577,
+    "dominantColor": "srgb(0,0,0)",
+    "anime": "Violet Evergarden"
+  },
+  {
+    "name": "Violet Evergarden 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/violet-evergarden-03.jpg",
+    "resolution": "3840x2160",
+    "fileSize": 1348074,
+    "dominantColor": "srgb(35,35,33)",
+    "anime": "Violet Evergarden"
+  },
+  {
+    "name": "Violet Evergarden 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/violet-evergarden-04.png",
+    "resolution": "1920x1080",
+    "fileSize": 2587711,
+    "dominantColor": "srgb(69,58,105)",
+    "anime": "Violet Evergarden"
+  },
+  {
+    "name": "Violet Evergarden 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/violet-evergarden-05.png",
+    "resolution": "3840x2160",
+    "fileSize": 8804065,
+    "dominantColor": "srgb(54,115,199)",
+    "anime": "Violet Evergarden"
+  },
+  {
+    "name": "Violet Evergarden 6",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.2/violet-evergarden-06.png",
+    "resolution": "1920x1080",
+    "fileSize": 3069173,
+    "dominantColor": "srgba(122,106,71,1)",
+    "anime": "Violet Evergarden"
+  },
+  {
+    "name": "Weathering with you 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-01.jpg",
+    "resolution": "3840x2160",
+    "fileSize": 343479,
+    "dominantColor": "srgb(10,113,218)",
+    "anime": "Weathering with you"
+  },
+  {
+    "name": "Weathering with you 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-02.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 258135,
+    "dominantColor": "srgb(85,112,131)",
+    "anime": "Weathering with you"
+  },
+  {
+    "name": "Weathering with you 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-03.jpg",
+    "resolution": "1920x1080",
+    "fileSize": 331003,
+    "dominantColor": "srgb(100,153,185)",
+    "anime": "Weathering with you"
+  },
+  {
+    "name": "Weathering with you 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-04.jpg",
+    "resolution": "3821x2000",
+    "fileSize": 355267,
+    "dominantColor": "srgb(42,144,206)",
+    "anime": "Weathering with you"
+  },
+  {
+    "name": "Weathering with you 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-05.png",
+    "resolution": "1920x1080",
+    "fileSize": 1278495,
+    "dominantColor": "srgb(169,166,155)",
+    "anime": "Weathering with you"
+  },
+  {
+    "name": "Weathering with you 6",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/weathering-with-you-06.jpg",
+    "resolution": "4093x2894",
+    "fileSize": 447448,
+    "dominantColor": "srgb(3,47,134)",
+    "anime": "Weathering with you"
+  },
+  {
+    "name": "Your name 1",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-01.jpg",
+    "resolution": "7015x3879",
+    "fileSize": 973971,
+    "dominantColor": "srgb(5,7,22)",
+    "anime": "Your name"
+  },
+  {
+    "name": "Your name 2",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-02.png",
+    "resolution": "1920x1080",
+    "fileSize": 649110,
+    "dominantColor": "srgb(63,84,149)",
+    "anime": "Your name"
+  },
+  {
+    "name": "Your name 3",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-03.jpg",
+    "resolution": "8858x4962",
+    "fileSize": 2187185,
+    "dominantColor": "srgb(105,126,179)",
+    "anime": "Your name"
+  },
+  {
+    "name": "Your name 4",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-04.png",
+    "resolution": "1920x1080",
+    "fileSize": 1138019,
+    "dominantColor": "srgb(109,137,112)",
+    "anime": "Your name"
+  },
+  {
+    "name": "Your name 5",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-05.png",
+    "resolution": "3840x2160",
+    "fileSize": 1317255,
+    "dominantColor": "srgb(35,41,90)",
+    "anime": "Your name"
+  },
+  {
+    "name": "Your name 6",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.1/your-name-06.jpg",
+    "resolution": "3840x2160",
+    "fileSize": 443271,
+    "dominantColor": "srgb(3,6,15)",
+    "anime": "Your name"
   }
 ]
