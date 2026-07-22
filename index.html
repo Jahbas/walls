@@ -672,11 +672,12 @@
   }
 
   .info-dot .dot-btn svg {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     stroke: var(--mute);
     fill: none;
-    stroke-width: 1.5;
+    stroke-width: 2;
+    stroke-linecap: round;
   }
 
   .info-dot .dot-btn:hover { border-color: #333; }
@@ -688,12 +689,18 @@
   .info-dot .info-text {
     font-size: 11px;
     color: var(--mute);
-    display: none;
     white-space: nowrap;
     font-variant-numeric: tabular-nums;
+    overflow: hidden;
+    max-width: 0;
+    opacity: 0;
+    transition: max-width 0.3s ease, opacity 0.2s ease;
   }
 
-  .info-dot.open .info-text { display: block; }
+  .info-dot.open .info-text {
+    max-width: 200px;
+    opacity: 1;
+  }
 </style>
 </head>
 <body>
@@ -763,7 +770,7 @@
 
 <div class="info-dot" id="infoDot">
   <button class="dot-btn" id="infoDotBtn" aria-label="Info">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 17v-6"/><circle cx="12" cy="7.5" r="1.5" fill="currentColor" stroke="none"/></svg>
   </button>
   <div class="info-text" id="infoText"></div>
 </div>
