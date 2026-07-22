@@ -468,6 +468,21 @@
 
   .card .download:hover { background: rgba(255,255,255,0.2); }
 
+  .card .size-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.55);
+    font-size: 10px;
+    color: rgba(255,255,255,0.7);
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
   @keyframes enter {
     to { opacity: 1; transform: translateY(0); }
   }
@@ -1014,6 +1029,13 @@ async function init() {
   const folderSvg = '<svg viewBox="0 0 24 24" style="position:absolute;top:12px;left:12px;width:20px;height:20px;stroke:rgba(255,255,255,0.6);fill:none;stroke-width:1.5;z-index:1"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>';
   const downloadSvg = '<svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
 
+  function formatSize(bytes) {
+    if (!bytes) return '';
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1048576) return `${(bytes / 1024).toFixed(0)} KB`;
+    return `${(bytes / 1048576).toFixed(1)} MB`;
+  }
+
   function render() {
     grid.innerHTML = '';
     empty.style.display = 'none';
@@ -1104,6 +1126,14 @@ async function init() {
       meta.appendChild(info);
       meta.appendChild(dl);
       card.appendChild(img);
+
+      if (wp.fileSize) {
+        const szBadge = document.createElement('div');
+        szBadge.className = 'size-badge';
+        szBadge.textContent = formatSize(wp.fileSize);
+        card.appendChild(szBadge);
+      }
+
       card.appendChild(meta);
 
       card.addEventListener('click', () => {
