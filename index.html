@@ -650,24 +650,40 @@
   .info-dot {
     position: fixed;
     bottom: 24px;
-    left: 24px;
+    right: 24px;
     z-index: 50;
     display: flex;
-    align-items: flex-end;
-    gap: 10px;
+    align-items: center;
+    gap: 8px;
   }
 
-  .info-dot .dot {
-    width: 8px;
-    height: 8px;
+  .info-dot .dot-btn {
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background: var(--mute);
+    background: var(--surface);
+    border: 1px solid var(--border);
     cursor: pointer;
-    transition: background 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.15s ease;
     flex-shrink: 0;
   }
 
-  .info-dot .dot:hover { background: var(--text); }
+  .info-dot .dot-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--mute);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .info-dot .dot-btn:hover { border-color: #333; }
+  .info-dot .dot-btn:hover svg { stroke: var(--text); }
+
+  .info-dot.open .dot-btn { border-color: #444; }
+  .info-dot.open .dot-btn svg { stroke: var(--text); }
 
   .info-dot .info-text {
     font-size: 11px;
@@ -678,7 +694,6 @@
   }
 
   .info-dot.open .info-text { display: block; }
-  .info-dot.open .dot { background: var(--text); }
 </style>
 </head>
 <body>
@@ -747,7 +762,9 @@
 </div>
 
 <div class="info-dot" id="infoDot">
-  <div class="dot" id="infoDotBtn"></div>
+  <button class="dot-btn" id="infoDotBtn" aria-label="Info">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  </button>
   <div class="info-text" id="infoText"></div>
 </div>
 
