@@ -646,6 +646,39 @@
     .card, .folder-card { animation: none; opacity: 1; transform: none; }
     .lightbox img { transition: none; }
   }
+
+  .info-dot {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 50;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .info-dot .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--mute);
+    cursor: pointer;
+    transition: background 0.15s ease;
+    flex-shrink: 0;
+  }
+
+  .info-dot .dot:hover { background: var(--text); }
+
+  .info-dot .info-text {
+    font-size: 11px;
+    color: var(--mute);
+    display: none;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .info-dot.open .info-text { display: block; }
+  .info-dot.open .dot { background: var(--text); }
 </style>
 </head>
 <body>
@@ -711,6 +744,11 @@
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     </button>
   </div>
+</div>
+
+<div class="info-dot" id="infoDot">
+  <div class="dot" id="infoDotBtn"></div>
+  <div class="info-text" id="infoText"></div>
 </div>
 
 <div class="grid" id="grid"></div>
@@ -862,6 +900,15 @@ async function init() {
   }
 
   loading.style.display = 'none';
+
+  const totalBytes = allWallpapers.reduce((s, w) => s + (w.fileSize || 0), 0);
+  const totalSize = formatSize(totalBytes);
+  const infoText = document.getElementById('infoText');
+  infoText.textContent = `${allWallpapers.length} wallpapers · ${totalSize}`;
+
+  document.getElementById('infoDotBtn').addEventListener('click', () => {
+    document.getElementById('infoDot').classList.toggle('open');
+  });
 
   state.allAnimes = [...new Set(allWallpapers.map(w => w.anime).filter(Boolean))].sort();
 
