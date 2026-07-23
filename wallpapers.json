@@ -1206,5 +1206,85 @@
     "fileSize": 443271,
     "dominantColor": "srgb(3,6,15)",
     "anime": "Your name"
+  },
+  {
+    "name": "Angel Devil (banner)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.3/chainsaw-man-angel-devil-banner-01.jpg",
+    "resolution": "9360x3300",
+    "fileSize": 481580,
+    "dominantColor": "srgb(250,208,212)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Angel Devil"
+  },
+  {
+    "name": "Angel Devil (profile)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.3/chainsaw-man-angel-devil-profile-01.jpg",
+    "resolution": "2808x2808",
+    "fileSize": 215860,
+    "dominantColor": "srgb(244,232,232)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Angel Devil"
+  },
+  {
+    "name": "Yoru (banner)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.3/chainsaw-man-yoru-banner-01.jpg",
+    "resolution": "6144x2166",
+    "fileSize": 447725,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Yoru"
+  },
+  {
+    "name": "Yoru (profile)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.3/chainsaw-man-yoru-profile-01.jpg",
+    "resolution": "2023x2023",
+    "fileSize": 294531,
+    "dominantColor": "srgb(8,7,12)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Yoru"
+  },
+  {
+    "name": "Frieren (banner)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.3/frieren-beyond-journeys-end-frieren-banner-01.jpg",
+    "resolution": "9360x3300",
+    "fileSize": 697087,
+    "dominantColor": "srgb(244,229,224)",
+    "anime": "Frieren Beyond Journeys end",
+    "section": "Banners",
+    "set": "Frieren Beyond Journeys end / Frieren"
+  },
+  {
+    "name": "Frieren (profile)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.3/frieren-beyond-journeys-end-frieren-profile-01.jpg",
+    "resolution": "2876x2880",
+    "fileSize": 310605,
+    "dominantColor": "srgb(231,215,199)",
+    "anime": "Frieren Beyond Journeys end",
+    "section": "Profiles",
+    "set": "Frieren Beyond Journeys end / Frieren"
+  },
+  {
+    "name": "Ken (banner)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.3/tokyo-ghoul-ken-banner-01.gif",
+    "resolution": "500x281",
+    "fileSize": 1820660,
+    "dominantColor": "srgb(252,250,248)",
+    "anime": "Tokyo Ghoul",
+    "section": "Banners",
+    "set": "Tokyo Ghoul / Ken"
+  },
+  {
+    "name": "Ken (profile)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.3/tokyo-ghoul-ken-profile-01.jpg",
+    "resolution": "736x883",
+    "fileSize": 137087,
+    "dominantColor": "srgb(249,245,242)",
+    "anime": "Tokyo Ghoul",
+    "section": "Profiles",
+    "set": "Tokyo Ghoul / Ken"
   }
 ]
