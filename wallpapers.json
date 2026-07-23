@@ -1286,5 +1286,325 @@
     "anime": "Tokyo Ghoul",
     "section": "Profiles",
     "set": "Tokyo Ghoul / Ken"
+  },
+  {
+    "name": "Guts (banner)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/berserk-guts-banner-01.jpg",
+    "resolution": "2048x818",
+    "fileSize": 359148,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Berserk",
+    "section": "Banners",
+    "set": "Berserk / Guts"
+  },
+  {
+    "name": "Guts (profile)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/berserk-guts-profile-01.jpg",
+    "resolution": "1160x1160",
+    "fileSize": 235143,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Berserk",
+    "section": "Profiles",
+    "set": "Berserk / Guts"
+  },
+  {
+    "name": "Asa (banner)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-asa-banner-01.png",
+    "resolution": "1003x354",
+    "fileSize": 437825,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Asa"
+  },
+  {
+    "name": "Asa (profile)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-asa-profile-01.jpg",
+    "resolution": "1472x1472",
+    "fileSize": 550648,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Asa"
+  },
+  {
+    "name": "Denji (banner 1)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-denji-banner-01.jpg",
+    "resolution": "7020x2475",
+    "fileSize": 283773,
+    "dominantColor": "srgb(241,81,31)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Denji"
+  },
+  {
+    "name": "Denji (banner 2)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-denji-banner-02.jpg",
+    "resolution": "2048x818",
+    "fileSize": 943392,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Denji"
+  },
+  {
+    "name": "Denji (banner 3)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-denji-banner-03.jpg",
+    "resolution": "7020x2475",
+    "fileSize": 845226,
+    "dominantColor": "srgb(253,253,253)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Denji"
+  },
+  {
+    "name": "Denji (banner 4)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-denji-banner-04.png",
+    "resolution": "3488x1216",
+    "fileSize": 7000980,
+    "dominantColor": "srgb(241,241,241)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Denji"
+  },
+  {
+    "name": "Denji (profile 1)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-denji-profile-01.jpg",
+    "resolution": "1173x1173",
+    "fileSize": 95837,
+    "dominantColor": "srgb(255,254,175)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Denji"
+  },
+  {
+    "name": "Denji (profile 2)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-denji-profile-02.jpg",
+    "resolution": "1472x1472",
+    "fileSize": 1188694,
+    "dominantColor": "srgb(239,239,237)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Denji"
+  },
+  {
+    "name": "Denji (profile 3)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-denji-profile-03.jpg",
+    "resolution": "1308x1308",
+    "fileSize": 160874,
+    "dominantColor": "srgb(172,170,173)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Denji"
+  },
+  {
+    "name": "Denji (profile 4)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-denji-profile-04.png",
+    "resolution": "2048x2080",
+    "fileSize": 5557037,
+    "dominantColor": "srgb(253,254,253)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Denji"
+  },
+  {
+    "name": "Makima (banner 1)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-makima-banner-01.gif",
+    "resolution": "800x282",
+    "fileSize": 7222106,
+    "dominantColor": "srgb(0,0,0)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Makima"
+  },
+  {
+    "name": "Makima (banner 2)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-makima-banner-02.jpg",
+    "resolution": "9360x3300",
+    "fileSize": 346722,
+    "dominantColor": "srgb(1,1,1)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Makima"
+  },
+  {
+    "name": "Makima (banner 3)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-makima-banner-03.jpg",
+    "resolution": "2048x818",
+    "fileSize": 149708,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Makima"
+  },
+  {
+    "name": "Makima (profile 1)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-makima-profile-01.jpg",
+    "resolution": "736x736",
+    "fileSize": 53992,
+    "dominantColor": "srgb(66,47,40)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Makima"
+  },
+  {
+    "name": "Makima (profile 2)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-makima-profile-02.jpg",
+    "resolution": "4320x4320",
+    "fileSize": 757055,
+    "dominantColor": "srgb(1,1,1)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Makima"
+  },
+  {
+    "name": "Makima (profile 3)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-makima-profile-03.jpg",
+    "resolution": "1298x1298",
+    "fileSize": 282996,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Makima"
+  },
+  {
+    "name": "Quanxi (banner)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-quanxi-banner-01.jpg",
+    "resolution": "11700x4680",
+    "fileSize": 1062208,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Quanxi"
+  },
+  {
+    "name": "Quanxi (profile)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-quanxi-profile-01.jpg",
+    "resolution": "3680x3680",
+    "fileSize": 237435,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Quanxi"
+  },
+  {
+    "name": "Reze (banner)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-reze-banner-01.jpg",
+    "resolution": "9360x3300",
+    "fileSize": 546848,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Chainsaw Man",
+    "section": "Banners",
+    "set": "Chainsaw Man / Reze"
+  },
+  {
+    "name": "Reze (profile)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/chainsaw-man-reze-profile-01.jpg",
+    "resolution": "2944x2944",
+    "fileSize": 369061,
+    "dominantColor": "srgb(216,216,216)",
+    "anime": "Chainsaw Man",
+    "section": "Profiles",
+    "set": "Chainsaw Man / Reze"
+  },
+  {
+    "name": "Shinji (banner 1)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/neon-genesis-evangelion-shinji-banner-01.jpg",
+    "resolution": "2048x818",
+    "fileSize": 170172,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Neon Genesis Evangelion",
+    "section": "Banners",
+    "set": "Neon Genesis Evangelion / Shinji"
+  },
+  {
+    "name": "Shinji (banner 2)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/neon-genesis-evangelion-shinji-banner-02.jpg",
+    "resolution": "2048x818",
+    "fileSize": 513660,
+    "dominantColor": "srgb(0,0,0)",
+    "anime": "Neon Genesis Evangelion",
+    "section": "Banners",
+    "set": "Neon Genesis Evangelion / Shinji"
+  },
+  {
+    "name": "Shinji (banner 3)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/neon-genesis-evangelion-shinji-banner-03.jpg",
+    "resolution": "2048x818",
+    "fileSize": 549612,
+    "dominantColor": "srgb(13,21,43)",
+    "anime": "Neon Genesis Evangelion",
+    "section": "Banners",
+    "set": "Neon Genesis Evangelion / Shinji"
+  },
+  {
+    "name": "Shinji (profile 1)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/neon-genesis-evangelion-shinji-profile-01.jpg",
+    "resolution": "1320x1320",
+    "fileSize": 459824,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Neon Genesis Evangelion",
+    "section": "Profiles",
+    "set": "Neon Genesis Evangelion / Shinji"
+  },
+  {
+    "name": "Shinji (profile 2)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/neon-genesis-evangelion-shinji-profile-02.jpg",
+    "resolution": "916x916",
+    "fileSize": 203894,
+    "dominantColor": "srgb(0,0,0)",
+    "anime": "Neon Genesis Evangelion",
+    "section": "Profiles",
+    "set": "Neon Genesis Evangelion / Shinji"
+  },
+  {
+    "name": "Shinji (profile 3)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/neon-genesis-evangelion-shinji-profile-03.jpg",
+    "resolution": "2944x2944",
+    "fileSize": 162916,
+    "dominantColor": "srgb(7,15,64)",
+    "anime": "Neon Genesis Evangelion",
+    "section": "Profiles",
+    "set": "Neon Genesis Evangelion / Shinji"
+  },
+  {
+    "name": "Thorfinn (banner 1)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/vinland-saga-thorfinn-banner-01.jpg",
+    "resolution": "9360x3300",
+    "fileSize": 662664,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Vinland Saga",
+    "section": "Banners",
+    "set": "Vinland Saga / Thorfinn"
+  },
+  {
+    "name": "Thorfinn (banner 2)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/vinland-saga-thorfinn-banner-02.jpg",
+    "resolution": "6144x2166",
+    "fileSize": 447725,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Vinland Saga",
+    "section": "Banners",
+    "set": "Vinland Saga / Thorfinn"
+  },
+  {
+    "name": "Thorfinn (profile 1)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/vinland-saga-thorfinn-profile-01.jpg",
+    "resolution": "4320x4320",
+    "fileSize": 851797,
+    "dominantColor": "srgb(255,255,255)",
+    "anime": "Vinland Saga",
+    "section": "Profiles",
+    "set": "Vinland Saga / Thorfinn"
+  },
+  {
+    "name": "Thorfinn (profile 2)",
+    "url": "https://github.com/Jahbas/walls/releases/download/0.0.4/vinland-saga-thorfinn-profile-02.jpg",
+    "resolution": "2208x2205",
+    "fileSize": 397977,
+    "dominantColor": "srgb(254,254,254)",
+    "anime": "Vinland Saga",
+    "section": "Profiles",
+    "set": "Vinland Saga / Thorfinn"
   }
 ]
