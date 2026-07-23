@@ -1425,8 +1425,16 @@ async function init() {
       card.appendChild(meta);
 
       card.addEventListener('click', () => {
-        if (state.section === 'Sets' && state.activeFolder && state.activeFolder.includes('/') && g.key.startsWith('Profile ')) {
-          state.pairFolder = g.key.replace('Profile ', '');
+        if (state.section === 'Sets') {
+          if (state.activeFolder) {
+            if (state.activeFolder.includes('/') && g.key.startsWith('Profile ')) {
+              state.pairFolder = g.key.replace('Profile ', '');
+            } else {
+              state.activeFolder = state.activeFolder + ' / ' + g.key;
+            }
+          } else {
+            state.activeFolder = g.key;
+          }
         } else {
           state.activeFolder = g.key;
         }
