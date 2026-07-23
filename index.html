@@ -743,6 +743,7 @@
   <button class="section-btn active" data-section="Wallpapers">Wallpapers</button>
   <button class="section-btn" data-section="Profiles">Profiles</button>
   <button class="section-btn" data-section="Banners">Banners</button>
+  <button class="section-btn" data-section="Sets">Sets</button>
 </div>
 
 <div class="search-row">
@@ -782,11 +783,11 @@
       </div>
     </div>
     <div class="filter-group">
-      <div class="filter-label">Anime</div>
+      <div class="filter-label" id="animeFilterLabel">Anime</div>
       <button class="filter-toggle" id="animeToggle">
-        <span class="toggle-dot"></span>
-        all anime
-      </button>
+      <span class="toggle-dot"></span>
+      <span id="animeToggleLabel">all anime</span>
+    </button>
       <div class="anime-list" id="animeList"></div>
     </div>
   </div>
@@ -913,6 +914,9 @@ function updatePills() {
 
   document.getElementById('animeToggle').classList.toggle('on', state.animes.length > 0);
   document.getElementById('folderBtn').classList.toggle('active', state.folderMode);
+  document.getElementById('folderBtn').setAttribute('aria-label', `${sectionLabel(true)} view`);
+  document.getElementById('animeToggleLabel').textContent = `all ${sectionLabel(true)}`;
+  document.getElementById('animeFilterLabel').textContent = state.section === 'Sets' ? 'Sets' : 'Anime';
 }
 
 function contradictoryFilters() {
@@ -924,8 +928,12 @@ function contradictoryFilters() {
 }
 
 function matches(wp) {
-  const wpSection = wp.section || 'Wallpapers';
-  if (wpSection !== state.section) return false;
+  if (state.section === 'Sets') {
+    if (!wp.set) return false;
+  } else {
+    const wpSection = wp.section || 'Wallpapers';
+    if (wpSection !== state.section) return false;
+  }
   const [w, h] = wp.resolution.split('x').map(Number);
   if (state.search) {
     const q = state.search.toLowerCase();
@@ -972,18 +980,23 @@ async function init() {
 
   function rebuildAnimeList() {
     const animeList = document.getElementById('animeList');
-    const pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section);
-    const sectionAnimes = [...new Set(pool.map(w => w.anime).filter(Boolean))].sort();
+    let pool;
+    if (state.section === 'Sets') {
+      pool = allWallpapers.filter(w => w.set);
+    } else {
+      pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section);
+    }
+    const sectionKeys = [...new Set(pool.map(groupKey).filter(Boolean))].sort();
     animeList.innerHTML = '';
-    sectionAnimes.forEach(a => {
+    sectionKeys.forEach(k => {
       const btn = document.createElement('button');
       btn.className = 'filter-option';
-      btn.textContent = a;
+      btn.textContent = k;
       btn.addEventListener('click', () => {
-        if (state.animes.includes(a)) {
-          state.animes = state.animes.filter(v => v !== a);
+        if (state.animes.includes(k)) {
+          state.animes = state.animes.filter(v => v !== k);
         } else {
-          state.animes.push(a);
+          state.animes.push(k);
         }
         update();
       });
@@ -995,8 +1008,13 @@ async function init() {
     if (state.animes.length > 0) {
       state.animes = [];
     } else {
-      const pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section);
-      state.animes = [...new Set(pool.map(w => w.anime).filter(Boolean))];
+      let pool;
+      if (state.section === 'Sets') {
+        pool = allWallpapers.filter(w => w.set);
+      } else {
+        pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section);
+      }
+      state.animes = [...new Set(pool.map(groupKey).filter(Boolean))];
     }
     update();
   });
@@ -1133,7 +1151,12 @@ async function init() {
   });
 
   folderDownloadBtn.addEventListener('click', () => {
-    const pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section && w.anime === state.activeFolder);
+    let pool;
+    if (state.section === 'Sets') {
+      pool = allWallpapers.filter(w => w.set && w.set === state.activeFolder);
+    } else {
+      pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section && w.anime === state.activeFolder);
+    }
     if (pool.length === 0) return;
 
     pool.forEach((wp, i) => {
@@ -1155,11 +1178,30 @@ async function init() {
     return `${(bytes / 1048576).toFixed(1)} MB`;
   }
 
+  function sectionLabel(plural) {
+    switch (state.section) {
+      case 'Profiles': return plural ? 'profiles' : 'profile';
+      case 'Banners': return plural ? 'banners' : 'banner';
+      case 'Sets': return plural ? 'sets' : 'set';
+      default: return plural ? 'folders' : 'folder';
+    }
+  }
+
+  function groupKey(wp) {
+    if (state.section === 'Sets') return wp.set || null;
+    return wp.anime || null;
+  }
+
   function render() {
     grid.innerHTML = '';
     empty.style.display = 'none';
 
-    const pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section);
+    let pool;
+    if (state.section === 'Sets') {
+      pool = allWallpapers.filter(w => w.set);
+    } else {
+      pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section);
+    }
 
     if (state.folderMode && !state.activeFolder) {
       folderNav.classList.remove('show');
@@ -1167,27 +1209,28 @@ async function init() {
       updateAnimeOptions();
       updatePills();
 
-      const animes = [...new Set(pool.map(w => w.anime).filter(Boolean))].sort();
+      const keys = [...new Set(pool.map(groupKey).filter(Boolean))].sort();
 
-      const folders = animes.map(anime => ({
-        anime,
-        preview: pool.find(w => w.anime === anime) || null,
-        count: pool.filter(w => w.anime === anime).length,
+      const groups = keys.map(k => ({
+        key: k,
+        preview: pool.find(w => groupKey(w) === k) || null,
+        count: pool.filter(w => groupKey(w) === k).length,
       }));
 
       if (state.search) {
         const q = state.search.toLowerCase();
-        const filtered = folders.filter(f => f.anime.toLowerCase().includes(q));
-        renderedFolders(filtered);
-        countEl.innerHTML = `${filtered.length} folder${filtered.length === 1 ? '' : 's'}`;
+        const filtered = groups.filter(g => g.key.toLowerCase().includes(q));
+        renderedGroups(filtered);
+        countEl.innerHTML = `${filtered.length} ${sectionLabel(true)}`;
       } else {
-        renderedFolders(folders);
-        countEl.innerHTML = `${folders.length} folder${folders.length === 1 ? '' : 's'}`;
+        renderedGroups(groups);
+        countEl.innerHTML = `${groups.length} ${sectionLabel(true)}`;
       }
       return;
     }
 
     if (state.folderMode && state.activeFolder) {
+      pool = pool.filter(w => groupKey(w) === state.activeFolder);
       folderNav.classList.add('show');
     } else if (!state.folderMode) {
       folderNav.classList.remove('show');
@@ -1196,7 +1239,7 @@ async function init() {
     const filtered = pool.filter(matches);
 
     const sectionBytes = pool.reduce((s, w) => s + (w.fileSize || 0), 0);
-    document.getElementById('infoText').textContent = `${pool.length} ${state.section.toLowerCase()} · ${formatSize(sectionBytes)}`;
+    document.getElementById('infoText').textContent = `${pool.length} ${sectionLabel(false)}s · ${formatSize(sectionBytes)}`;
 
     if (filtered.length === 0) {
       empty.style.display = 'flex';
@@ -1208,9 +1251,9 @@ async function init() {
     const total = pool.length;
     const shown = filtered.length;
     if (total === shown) {
-      countEl.innerHTML = `${total} wallpaper${total === 1 ? '' : 's'}`;
+      countEl.innerHTML = `${total} ${sectionLabel(false)}${total === 1 ? '' : 's'}`;
     } else {
-      countEl.innerHTML = `<span class="filtered">${shown}</span> / ${total} wallpapers`;
+      countEl.innerHTML = `<span class="filtered">${shown}</span> / ${total} ${sectionLabel(true)}`;
     }
 
     filtered.forEach((wp, i) => {
@@ -1268,18 +1311,18 @@ async function init() {
     });
   }
 
-  function renderedFolders(folders) {
-    folders.forEach((f, i) => {
+  function renderedGroups(groups) {
+    groups.forEach((g, i) => {
       const card = document.createElement('div');
       card.className = 'folder-card';
       card.style.animationDelay = `${i * 0.04}s`;
 
       card.innerHTML = folderSvg;
 
-      if (f.preview) {
+      if (g.preview) {
         const img = document.createElement('img');
-        img.src = f.preview.url;
-        img.alt = f.anime;
+        img.src = g.preview.url;
+        img.alt = g.key;
         img.loading = 'lazy';
         card.appendChild(img);
       }
@@ -1288,17 +1331,17 @@ async function init() {
       meta.className = 'folder-meta';
       const fnDiv = document.createElement('div');
       fnDiv.className = 'folder-name';
-      fnDiv.textContent = f.anime;
+      fnDiv.textContent = g.key;
       const fcDiv = document.createElement('div');
       fcDiv.className = 'folder-count';
-      fcDiv.textContent = `${f.count} wallpaper${f.count === 1 ? '' : 's'}`;
+      fcDiv.textContent = `${g.count} ${sectionLabel(false)}${g.count === 1 ? '' : 's'}`;
       meta.appendChild(fnDiv);
       meta.appendChild(fcDiv);
 
       card.appendChild(meta);
 
       card.addEventListener('click', () => {
-        state.activeFolder = f.anime;
+        state.activeFolder = g.key;
         state.search = '';
         document.getElementById('search').value = '';
         document.getElementById('searchClear').style.display = 'none';
