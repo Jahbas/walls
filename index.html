@@ -498,84 +498,6 @@
 
   .card .download:hover { background: rgba(255,255,255,0.2); }
 
-  .set-card {
-    position: relative;
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--surface);
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(12px);
-    animation: enter 0.5s ease forwards;
-    transition: transform 0.25s ease;
-    will-change: transform;
-  }
-
-  .set-card:hover { transform: translateY(-3px); }
-
-  .set-card::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 6px;
-    box-shadow: 0 12px 40px var(--shadow);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    pointer-events: none;
-  }
-
-  .set-card:hover::after { opacity: 1; }
-
-  .set-card .set-banner {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-  }
-
-  .set-card:hover .set-banner { transform: scale(1.03); }
-
-  .set-card .set-profile {
-    position: absolute;
-    bottom: 8px;
-    left: 12px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(255,255,255,0.2);
-    background: var(--surface);
-    transition: transform 0.25s ease;
-    z-index: 2;
-  }
-
-  .set-card:hover .set-profile { transform: scale(1.1); }
-
-  .set-card .set-meta {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 28px 16px 12px 84px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  .set-card .set-name {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text);
-  }
-
-  .set-card .set-res {
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
-    font-variant-numeric: tabular-nums;
-  }
-
   .card .size-badge {
     position: absolute;
     top: 10px;
@@ -1270,14 +1192,6 @@ async function init() {
     return wp.anime || null;
   }
 
-  function pairKey(wp) {
-    const parts = wp.url.split('/');
-    const filename = parts[parts.length - 1];
-    const m = filename.match(/-(banner|profile)-(\d+)/);
-    if (m) return filename.replace(/-(banner|profile)-(\d+)/, '-$2');
-    return filename;
-  }
-
   function render() {
     grid.innerHTML = '';
     empty.style.display = 'none';
@@ -1340,77 +1254,6 @@ async function init() {
       countEl.innerHTML = `${total} ${sectionLabel(false)}${total === 1 ? '' : 's'}`;
     } else {
       countEl.innerHTML = `<span class="filtered">${shown}</span> / ${total} ${sectionLabel(true)}`;
-    }
-
-    if (state.section === 'Sets' && state.activeFolder) {
-      const groups = new Map();
-      filtered.forEach(wp => {
-        const key = pairKey(wp);
-        if (!groups.has(key)) groups.set(key, { profile: null, banner: null });
-        const g = groups.get(key);
-        if ((wp.section || '') === 'Profiles') g.profile = wp;
-        else if ((wp.section || '') === 'Banners') g.banner = wp;
-        else g.banner = wp;
-      });
-      let pi = 0;
-      groups.forEach((g, key) => {
-        const card = document.createElement('div');
-        card.className = 'set-card';
-        card.style.animationDelay = `${pi * 0.04}s`;
-        pi++;
-
-        const banner = g.banner || g.profile;
-        if (banner) {
-          const bImg = document.createElement('img');
-          bImg.className = 'set-banner';
-          bImg.src = banner.url;
-          bImg.alt = banner.name || '';
-          bImg.loading = 'lazy';
-          card.appendChild(bImg);
-        }
-
-        if (g.profile && g.banner) {
-          const pImg = document.createElement('img');
-          pImg.className = 'set-profile';
-          pImg.src = g.profile.url;
-          pImg.alt = g.profile.name || '';
-          pImg.loading = 'lazy';
-          card.appendChild(pImg);
-        }
-
-        const meta = document.createElement('div');
-        meta.className = 'set-meta';
-        const nameDiv = document.createElement('div');
-        nameDiv.className = 'set-name';
-        const baseName = (g.banner || g.profile).name.replace(/\s*\((banner|profile)\s*\d*\)/, '').trim();
-        nameDiv.textContent = baseName;
-        meta.appendChild(nameDiv);
-        if (g.banner) {
-          const resDiv = document.createElement('div');
-          resDiv.className = 'set-res';
-          resDiv.textContent = g.banner.resolution;
-          meta.appendChild(resDiv);
-        }
-
-        const dl = document.createElement('button');
-        dl.className = 'download';
-        dl.innerHTML = downloadSvg;
-        dl.title = 'Download profile';
-        dl.addEventListener('click', e => {
-          e.stopPropagation();
-          if (g.profile) triggerDownload(g.profile.url, g.profile.name || '');
-          else if (g.banner) triggerDownload(g.banner.url, g.banner.name || '');
-        });
-        meta.appendChild(dl);
-        card.appendChild(meta);
-
-        card.addEventListener('click', () => {
-          openLightbox(g.profile || g.banner, [g.profile, g.banner].filter(Boolean), 0);
-        });
-
-        grid.appendChild(card);
-      });
-      return;
     }
 
     filtered.forEach((wp, i) => {
