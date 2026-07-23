@@ -1155,14 +1155,24 @@ async function init() {
   });
 
   folderBackBtn.addEventListener('click', () => {
-    state.activeFolder = null;
+    if (state.section === 'Sets' && state.activeFolder && state.activeFolder.includes('/')) {
+      const parts = state.activeFolder.split(/\s*\/\s*/);
+      parts.pop();
+      state.activeFolder = parts.join(' / ') || null;
+    } else {
+      state.activeFolder = null;
+    }
     update();
   });
 
   folderDownloadBtn.addEventListener('click', () => {
     let pool;
     if (state.section === 'Sets') {
-      pool = allWallpapers.filter(w => w.set && w.set === state.activeFolder);
+      if (state.activeFolder && !state.activeFolder.includes('/')) {
+        pool = allWallpapers.filter(w => w.set && w.set.startsWith(state.activeFolder + ' / '));
+      } else {
+        pool = allWallpapers.filter(w => w.set && w.set === state.activeFolder);
+      }
     } else {
       pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section && w.anime === state.activeFolder);
     }
@@ -1188,7 +1198,16 @@ async function init() {
   }
 
   function groupKey(wp) {
-    if (state.section === 'Sets') return wp.set || null;
+    if (state.section === 'Sets') {
+      const s = wp.set;
+      if (!s) return null;
+      if (state.activeFolder && s.startsWith(state.activeFolder)) {
+        const rest = s.slice(state.activeFolder.length).replace(/^\s*\/\s*/, '');
+        return rest || null;
+      }
+      const parts = s.split(/\s*\/\s*/);
+      return parts[0] || null;
+    }
     return wp.anime || null;
   }
 
@@ -1230,7 +1249,37 @@ async function init() {
     }
 
     if (state.folderMode && state.activeFolder) {
-      pool = pool.filter(w => groupKey(w) === state.activeFolder);
+      if (state.section === 'Sets' && !state.activeFolder.includes('/')) {
+        // at anime level — show character sub-folders
+        const subPool = pool.filter(w => w.set && w.set.startsWith(state.activeFolder + ' / '));
+        const keys = [...new Set(subPool.map(groupKey).filter(Boolean))].sort();
+        const groups = keys.map(k => ({
+          key: k,
+          preview: subPool.find(w => groupKey(w) === k) || null,
+          count: subPool.filter(w => groupKey(w) === k).length,
+        }));
+        folderNav.classList.add('show');
+        if (groups.length === 0) {
+          empty.style.display = 'flex';
+          emptyMsg.textContent = 'no sets match';
+          return;
+        }
+        if (state.search) {
+          const q = state.search.toLowerCase();
+          const filtered = groups.filter(g => g.key.toLowerCase().includes(q));
+          renderedGroups(filtered);
+          countEl.innerHTML = `${filtered.length} sets`;
+        } else {
+          renderedGroups(groups);
+          countEl.innerHTML = `${groups.length} sets`;
+        }
+        return;
+      }
+      // at character level or non-Sets — show individual cards
+      pool = pool.filter(w => {
+        if (state.section === 'Sets') return w.set === state.activeFolder;
+        return groupKey(w) === state.activeFolder;
+      });
       folderNav.classList.add('show');
     } else if (!state.folderMode) {
       folderNav.classList.remove('show');
