@@ -39,13 +39,43 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
 
   h1 {
     font-size: 15px;
     font-weight: 500;
     letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .section-nav {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 20px;
+    background: var(--surface);
+    border-radius: 7px;
+    padding: 3px;
+    width: fit-content;
+    border: 1px solid var(--border);
+  }
+
+  .section-btn {
+    padding: 6px 16px;
+    border-radius: 5px;
+    background: none;
+    border: none;
+    color: var(--mute);
+    font-size: 13px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .section-btn:hover { color: var(--text); }
+
+  .section-btn.active {
+    background: var(--active);
     color: var(--text);
   }
 
@@ -709,6 +739,12 @@
   <h1>highpapers</h1>
 </header>
 
+<div class="section-nav" id="sectionNav">
+  <button class="section-btn active" data-section="Wallpapers">Wallpapers</button>
+  <button class="section-btn" data-section="Profiles">Profiles</button>
+  <button class="section-btn" data-section="Banners">Banners</button>
+</div>
+
 <div class="search-row">
   <div class="search-wrap">
     <input type="text" class="search" id="search" placeholder="search...">
@@ -815,6 +851,7 @@ const state = {
   allAnimes: [],
   folderMode: false,
   activeFolder: null,
+  section: 'Wallpapers',
 };
 
 let allWallpapers = [];
@@ -887,6 +924,8 @@ function contradictoryFilters() {
 }
 
 function matches(wp) {
+  const wpSection = wp.section || 'Wallpapers';
+  if (wpSection !== state.section) return false;
   const [w, h] = wp.resolution.split('x').map(Number);
   if (state.search) {
     const q = state.search.toLowerCase();
@@ -925,38 +964,39 @@ async function init() {
 
   loading.style.display = 'none';
 
-  const totalBytes = allWallpapers.reduce((s, w) => s + (w.fileSize || 0), 0);
-  const totalSize = formatSize(totalBytes);
-  const infoText = document.getElementById('infoText');
-  infoText.textContent = `${allWallpapers.length} wallpapers · ${totalSize}`;
-
   document.getElementById('infoDotBtn').addEventListener('click', () => {
     document.getElementById('infoDot').classList.toggle('open');
   });
 
   state.allAnimes = [...new Set(allWallpapers.map(w => w.anime).filter(Boolean))].sort();
 
-  const animeList = document.getElementById('animeList');
-  state.allAnimes.forEach(a => {
-    const btn = document.createElement('button');
-    btn.className = 'filter-option';
-    btn.textContent = a;
-    btn.addEventListener('click', () => {
-      if (state.animes.includes(a)) {
-        state.animes = state.animes.filter(v => v !== a);
-      } else {
-        state.animes.push(a);
-      }
-      update();
+  function rebuildAnimeList() {
+    const animeList = document.getElementById('animeList');
+    const pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section);
+    const sectionAnimes = [...new Set(pool.map(w => w.anime).filter(Boolean))].sort();
+    animeList.innerHTML = '';
+    sectionAnimes.forEach(a => {
+      const btn = document.createElement('button');
+      btn.className = 'filter-option';
+      btn.textContent = a;
+      btn.addEventListener('click', () => {
+        if (state.animes.includes(a)) {
+          state.animes = state.animes.filter(v => v !== a);
+        } else {
+          state.animes.push(a);
+        }
+        update();
+      });
+      animeList.appendChild(btn);
     });
-    animeList.appendChild(btn);
-  });
+  }
 
   document.getElementById('animeToggle').addEventListener('click', () => {
     if (state.animes.length > 0) {
       state.animes = [];
     } else {
-      state.animes = [...state.allAnimes];
+      const pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section);
+      state.animes = [...new Set(pool.map(w => w.anime).filter(Boolean))];
     }
     update();
   });
@@ -994,6 +1034,14 @@ async function init() {
     state.folderMode = !state.folderMode;
     state.activeFolder = null;
     localStorage.setItem('walls:folderMode', state.folderMode);
+    update();
+  });
+
+  document.getElementById('sectionNav').addEventListener('click', e => {
+    if (!e.target.classList.contains('section-btn')) return;
+    state.section = e.target.dataset.section;
+    state.animes = [];
+    localStorage.setItem('walls:section', state.section);
     update();
   });
 
@@ -1085,10 +1133,10 @@ async function init() {
   });
 
   folderDownloadBtn.addEventListener('click', () => {
-    const folder = allWallpapers.filter(w => w.anime === state.activeFolder);
-    if (folder.length === 0) return;
+    const pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section && w.anime === state.activeFolder);
+    if (pool.length === 0) return;
 
-    folder.forEach((wp, i) => {
+    pool.forEach((wp, i) => {
       const iframe = document.createElement('iframe');
       iframe.style.display = 'none';
       iframe.src = wp.url;
@@ -1111,16 +1159,20 @@ async function init() {
     grid.innerHTML = '';
     empty.style.display = 'none';
 
-      if (state.folderMode && !state.activeFolder) {
+    const pool = allWallpapers.filter(w => (w.section || 'Wallpapers') === state.section);
+
+    if (state.folderMode && !state.activeFolder) {
       folderNav.classList.remove('show');
       state.animes = [];
       updateAnimeOptions();
       updatePills();
 
-      const folders = state.allAnimes.map(anime => ({
+      const animes = [...new Set(pool.map(w => w.anime).filter(Boolean))].sort();
+
+      const folders = animes.map(anime => ({
         anime,
-        preview: allWallpapers.find(w => w.anime === anime) || null,
-        count: allWallpapers.filter(w => w.anime === anime).length,
+        preview: pool.find(w => w.anime === anime) || null,
+        count: pool.filter(w => w.anime === anime).length,
       }));
 
       if (state.search) {
@@ -1135,15 +1187,16 @@ async function init() {
       return;
     }
 
-    let pool = allWallpapers;
     if (state.folderMode && state.activeFolder) {
-      pool = allWallpapers.filter(w => w.anime === state.activeFolder);
       folderNav.classList.add('show');
     } else if (!state.folderMode) {
       folderNav.classList.remove('show');
     }
 
     const filtered = pool.filter(matches);
+
+    const sectionBytes = pool.reduce((s, w) => s + (w.fileSize || 0), 0);
+    document.getElementById('infoText').textContent = `${pool.length} ${state.section.toLowerCase()} · ${formatSize(sectionBytes)}`;
 
     if (filtered.length === 0) {
       empty.style.display = 'flex';
@@ -1275,11 +1328,19 @@ async function init() {
     });
   }
 
+  function updateSectionNav() {
+    document.querySelectorAll('.section-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.section === state.section);
+    });
+    rebuildAnimeList();
+  }
+
   function update() {
     updatePills();
     updateResOptions();
     updateScreenOptions();
     updateAnimeOptions();
+    updateSectionNav();
     render();
     pushURL();
   }
@@ -1292,6 +1353,7 @@ async function init() {
     if (state.animes.length) p.set('anime', state.animes.join(','));
     if (state.folderMode && state.activeFolder) p.set('folder', state.activeFolder);
     if (state.folderMode && !state.activeFolder) p.set('view', 'folders');
+    if (state.section !== 'Wallpapers') p.set('section', state.section);
     const qs = p.toString();
     return qs ? '?' + qs : location.pathname;
   }
@@ -1309,6 +1371,7 @@ async function init() {
     state.res = (p.get('res') || '').split(',').filter(Boolean);
     state.screen = (p.get('screen') || '').split(',').filter(Boolean);
     state.animes = (p.get('anime') || '').split(',').filter(Boolean);
+    state.section = p.get('section') || 'Wallpapers';
     const folder = p.get('folder');
     if (folder) {
       state.folderMode = true;
@@ -1333,6 +1396,10 @@ async function init() {
     if (localStorage.getItem('walls:folderMode') === 'true') {
       state.folderMode = true;
     }
+  }
+  if (!location.search.includes('section=')) {
+    const savedSection = localStorage.getItem('walls:section');
+    if (savedSection) state.section = savedSection;
   }
   loadURL();
   update();
