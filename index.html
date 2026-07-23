@@ -852,6 +852,7 @@ const state = {
   allAnimes: [],
   folderMode: false,
   activeFolder: null,
+  pairFolder: null,
   section: 'Wallpapers',
 };
 
@@ -1155,7 +1156,9 @@ async function init() {
   });
 
   folderBackBtn.addEventListener('click', () => {
-    if (state.section === 'Sets' && state.activeFolder && state.activeFolder.includes('/')) {
+    if (state.pairFolder) {
+      state.pairFolder = null;
+    } else if (state.section === 'Sets' && state.activeFolder && state.activeFolder.includes('/')) {
       const parts = state.activeFolder.split(/\s*\/\s*/);
       parts.pop();
       state.activeFolder = parts.join(' / ') || null;
@@ -1168,7 +1171,9 @@ async function init() {
   folderDownloadBtn.addEventListener('click', () => {
     let pool;
     if (state.section === 'Sets') {
-      if (state.activeFolder && !state.activeFolder.includes('/')) {
+      if (state.pairFolder) {
+        pool = allWallpapers.filter(w => w.set === state.activeFolder && pairKey(w) === state.pairFolder);
+      } else if (state.activeFolder && !state.activeFolder.includes('/')) {
         pool = allWallpapers.filter(w => w.set && w.set.startsWith(state.activeFolder + ' / '));
       } else {
         pool = allWallpapers.filter(w => w.set && w.set === state.activeFolder);
@@ -1209,6 +1214,14 @@ async function init() {
       return parts[0] || null;
     }
     return wp.anime || null;
+  }
+
+  function pairKey(wp) {
+    const parts = wp.url.split('/');
+    const filename = parts[parts.length - 1];
+    const m = filename.match(/-(\d+)\.[^.]+$/);
+    if (m) return m[1];
+    return '1';
   }
 
   function render() {
@@ -1275,9 +1288,30 @@ async function init() {
         }
         return;
       }
+      if (state.section === 'Sets' && state.activeFolder.includes('/') && !state.pairFolder) {
+        const charPool = pool.filter(w => w.set === state.activeFolder);
+        const pairKeys = [...new Set(charPool.map(pairKey))].sort();
+        const groups = pairKeys.map(k => ({
+          key: 'Profile ' + k,
+          preview: charPool.find(w => pairKey(w) === k) || null,
+          count: charPool.filter(w => pairKey(w) === k).length,
+        }));
+        folderNav.classList.add('show');
+        if (groups.length === 0) {
+          empty.style.display = 'flex';
+          emptyMsg.textContent = 'no sets match';
+          return;
+        }
+        renderedGroups(groups);
+        countEl.innerHTML = `${groups.length} pairs`;
+        return;
+      }
       // at character level or non-Sets — show individual cards
       pool = pool.filter(w => {
-        if (state.section === 'Sets') return w.set === state.activeFolder;
+        if (state.section === 'Sets') {
+          if (state.pairFolder) return w.set === state.activeFolder && pairKey(w) === state.pairFolder;
+          return w.set === state.activeFolder;
+        }
         return groupKey(w) === state.activeFolder;
       });
       folderNav.classList.add('show');
@@ -1383,14 +1417,19 @@ async function init() {
       fnDiv.textContent = g.key;
       const fcDiv = document.createElement('div');
       fcDiv.className = 'folder-count';
-      fcDiv.textContent = `${g.count} ${sectionLabel(false)}${g.count === 1 ? '' : 's'}`;
+      const label = g.key.startsWith('Profile ') ? (g.count === 1 ? 'file' : 'files') : (sectionLabel(false) + (g.count === 1 ? '' : 's'));
+      fcDiv.textContent = `${g.count} ${label}`;
       meta.appendChild(fnDiv);
       meta.appendChild(fcDiv);
 
       card.appendChild(meta);
 
       card.addEventListener('click', () => {
-        state.activeFolder = g.key;
+        if (state.section === 'Sets' && state.activeFolder && state.activeFolder.includes('/') && g.key.startsWith('Profile ')) {
+          state.pairFolder = g.key.replace('Profile ', '');
+        } else {
+          state.activeFolder = g.key;
+        }
         state.search = '';
         document.getElementById('search').value = '';
         document.getElementById('searchClear').style.display = 'none';
@@ -1446,6 +1485,7 @@ async function init() {
     if (state.folderMode && state.activeFolder) p.set('folder', state.activeFolder);
     if (state.folderMode && !state.activeFolder) p.set('view', 'folders');
     if (state.section !== 'Wallpapers') p.set('section', state.section);
+    if (state.pairFolder) p.set('pair', state.pairFolder);
     const qs = p.toString();
     return qs ? '?' + qs : location.pathname;
   }
@@ -1477,6 +1517,7 @@ async function init() {
       search.value = state.search;
       document.getElementById('searchClear').style.display = 'flex';
     }
+    state.pairFolder = p.get('pair') || null;
   }
 
   window.addEventListener('popstate', () => {
