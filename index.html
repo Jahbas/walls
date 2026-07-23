@@ -927,6 +927,15 @@ function contradictoryFilters() {
   return false;
 }
 
+function sectionLabel(plural) {
+  switch (state.section) {
+    case 'Profiles': return plural ? 'profiles' : 'profile';
+    case 'Banners': return plural ? 'banners' : 'banner';
+    case 'Sets': return plural ? 'sets' : 'set';
+    default: return plural ? 'wallpapers' : 'wallpaper';
+  }
+}
+
 function matches(wp) {
   if (state.section === 'Sets') {
     if (!wp.set) return false;
@@ -1176,15 +1185,6 @@ async function init() {
     if (bytes < 1024) return `${bytes} B`;
     if (bytes < 1048576) return `${(bytes / 1024).toFixed(0)} KB`;
     return `${(bytes / 1048576).toFixed(1)} MB`;
-  }
-
-  function sectionLabel(plural) {
-    switch (state.section) {
-      case 'Profiles': return plural ? 'profiles' : 'profile';
-      case 'Banners': return plural ? 'banners' : 'banner';
-      case 'Sets': return plural ? 'sets' : 'set';
-      default: return plural ? 'folders' : 'folder';
-    }
   }
 
   function groupKey(wp) {
